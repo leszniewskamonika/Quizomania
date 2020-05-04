@@ -1,0 +1,60 @@
+.main-banner{
+    background: url("/images/start1.png");
+    height: 150vh;
+    background-position: center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width: 1240px){
+    .main-banner{
+        background: url("/images/start1.png");
+        height: 60vh;
+        background-position: center center;
+        background-size: cover;
+    }   
+}
+@media (max-width: 768px){
+    .main-banner{
+       background: url("/images/start1.png");
+       height: 60vh;
+       background-position: center center;
+       background-size: cover;
+    }
+    }
+@media (max-width: 640px){
+    .main-banner{
+         background: url("/images/start2.png");
+         height: 100vh;
+         background-position: center center;
+         background-size: cover;
+    }   
+    }
+@media (max-width: 360px){
+    .main-banner{
+        background: url("/images/start.jpg");
+        height: 50vh;
+        background-position: center center;
+        background-size: cover;
+    }   
+}
+
+
+.main-banner__button{
+
+    border: 2px solid white;
+    padding: 20px 30px;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 23px;
+    font-weight: bold;
+    background: rgba(0, 0, 0,0.5);
+    transition: 0.3s;
+}
+.main-banner__button:hover{
+    background: black;
+}
+
