@@ -11,15 +11,10 @@
 @media (max-width: 1240px){
     .main-banner{
         background: url("../images/start_optimized.jpg");
-        height: 100vh;
+        height: 60vh;
         background-position: center center;
         background-size: cover;
     }   
-}
-@media (max-width: 991px){
-    .main-banner{
-        height: 100vh;
-    }
 }
 @media (max-width: 640px){
     .main-banner{
