@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 06 Maj 2020, 19:59
+-- Czas generowania: 07 Maj 2020, 12:53
 -- Wersja serwera: 10.4.8-MariaDB
 -- Wersja PHP: 7.3.11
 
@@ -249,7 +249,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `login` varchar(50) COLLATE utf8_polish_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_polish_ci NOT NULL,
-  `password` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+  `password` varchar(256) COLLATE utf8_polish_ci NOT NULL,
   `role` enum('0','1') COLLATE utf8_polish_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
@@ -258,10 +258,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `login`, `email`, `password`, `role`) VALUES
-(1, 'admin', '', '21232f297a57a5a743894a0e4a801fc3', '1'),
-(2, 'madzix', '', 'ff953e606008f183014125564359bae6', '0'),
-(3, 'monia', '', '32b58001c82ef3e6444562f36899ed25', '0'),
-(4, 'ala', '', 'e88e6128e26eeff4daf1f5db07372784', '0');
+(10, 'adam', 'aaa@aaa.com', '$2y$10$YmjFc1/YG497cOPIpUyuA.Pr3pmABTCpi.bqSp.PAtDyi//kDnsYK', '0'),
+(11, 'admin', 'admin@admin.admin', '$2y$10$PMHfi0o3bN.l1TSY6CGA8OSJ8fFGmpooHoQddlxZuNMI2Uyat022G', '1'),
+(12, 'madzia', 'madzia@madzia.pl', '$2y$10$4Q6CixizmT5kVy.6YHqh8.FgnxJsMd7Y5EeA8BqKo.9kbYO7NPXDS', '0'),
+(13, 'monia', 'monia@monia.pl', '$2y$10$URRgxtg.kMvmYwlA.N/zxO6zyAyJdDsyK2OBUfjwKco3muRdjSON6', '0'),
+(14, 'ala', 'ala@ala.pl', '$2y$10$aku6spsmFJ6kjBUOZFSweeCScsq3azhwu17VedyOzti6bN3FdH/.K', '0');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -305,7 +306,7 @@ ALTER TABLE `qanda`
 -- AUTO_INCREMENT dla tabeli `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
