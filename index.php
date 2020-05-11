@@ -28,7 +28,7 @@
             </div>
             <ul class="main-navigation__quizy js-main-navigation__quizy">
                 <li class="main-navigation__quizy-item">
-                    <a  href="#" class="main-navigation__link">
+                    <a  href="index.php" class="main-navigation__link">
                       Home
                     </a>
                   </li>

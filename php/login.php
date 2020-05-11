@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
                   </a>
                 </li>
                 <li class="main-navigation__quizy-item">
-                    <a  href="#" class="main-navigation__link">
+                    <a  href="../php/login.php" class="main-navigation__link">
                       Logowanie
                     </a>
                   </li>
