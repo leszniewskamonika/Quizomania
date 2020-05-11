@@ -84,7 +84,7 @@
         </section>
         <section>
          <?php
-         include "class/DBConnection.php";
+         
 
 
 
