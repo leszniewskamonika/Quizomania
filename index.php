@@ -75,12 +75,20 @@
             <p class="about-us__paragraph">Jeśli również chciałbym podzielić się z nami swoją wiedzą na różne tematy lub dowiedzieć się czegoś nowego zapraszamy do naszej quizomaniowej społeczności.
             </p>
            </div>
-           <img class="about-us__image" src="/images/znak-zapytania.png" alt="">
+           <img class="about-us__image" src="images/znak-zapytania.png" alt="">
             </section>
         </div>
         <section class="bookmark" id="quizy">
           <h2 class="bookmark__header">Quizy</h2>
           <p class="bookmark__description">Poznaj nasze quizy i dołącz do zabawy</p>
+        </section>
+        <section>
+         <?php
+         include "class/DBConnection.php";
+
+
+
+         ?>
         </section>
         <footer class="footer">
           <a href="#" class="footer__logo-link">
