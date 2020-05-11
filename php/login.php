@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
             <img src="../images/tytul.svg" alt="Logo" class="footer__logo-image">
         </a>
         </footer>
-    </body>
-</html>    
+      </body>
+      </html>   
 
       

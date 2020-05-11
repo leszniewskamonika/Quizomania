@@ -54,11 +54,11 @@
                   </li>
             </ul>
             <button class="main-navigation__mobile-button js-main-navigation__mobile-button">
-               <img src="images/navigation.svg" alt="Otwórz / zamknij nawigację" class="main-navigation__mobile-button-image">
+               <img src="../images/navigation.svg" alt="Otwórz / zamknij nawigację" class="main-navigation__mobile-button-image">
             </button>
             </div>
         </nav>
-        <script src="js/main-navigation.js"></script>
+        <script src="../js/main-navigation.js"></script>
         
         
   
