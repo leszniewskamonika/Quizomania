@@ -24,7 +24,7 @@ $userInfo = $user->getUserInfo();
 
       <div class="main-banner-login">
         <div class="row">
-            <div class="col-lg-12 text-center">
+            
                 
             <p class="text-light display-1">Witaj w panelu użytkownika</hp>
     
