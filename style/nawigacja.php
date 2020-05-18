@@ -49,7 +49,7 @@
                   </li>
                   <li class="main-navigation__quizy-item">
                     <a  href="../php/register.php" class="main-navigation__link">
-                      Nowe konto
+                      Rejestracja
                     </a>
                   </li>
             </ul>

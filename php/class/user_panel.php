@@ -22,15 +22,12 @@ $userInfo = $user->getUserInfo();
 ?>
 
 
-      <div class="main-banner-register">
+      <div class="main-banner-login">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1 class="text-light display-1">Witaj w panelu użytkownika</h1>
-            </div>
-        </div>
-     
-    <div class="container pt-5">
-    <div class="row">
+                
+            <p class="text-light display-1">Witaj w panelu użytkownika</hp>
+    
         <div class="col-lg-10">
             <h2>Witaj <?php print $userInfo['login'];?></h2>                 
         </div>
@@ -38,14 +35,15 @@ $userInfo = $user->getUserInfo();
             <a href="<?php print SITE_URL; ?>user_panel.php?q=logout" class="logout">LOGOUT</a>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-            <a href="../class/user_panel.php" class="btn btn-primary">Twoje quizy</a>
-           
-            </div>
-        </div>
-    </div>  
-    </div>    
-   
+  </div>
+</div>
+</div>
+  
+
+    </section>
+        <footer class="footer">
+          <a href="#" class="footer__logo-link">
+            <img src="../../images/tytul.svg" alt="Logo" class="footer__logo-image">
+        </a>
+        </footer>
    

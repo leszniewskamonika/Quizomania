@@ -44,18 +44,23 @@
                 </li>
                 <li class="main-navigation__quizy-item">
                     <a  href="../../php/login.php" class="main-navigation__link">
-                      Logowanie
+                      Moje konto
                     </a>
                   </li>
                   <li class="main-navigation__quizy-item">
                     <a  href="../../php/register.php" class="main-navigation__link">
-                      Nowe konto
+                      Rejestracja
                     </a>
                   </li>
+                  <li class="main-navigation__quizy-item">
+                  <a href="<?php print SITE_URL; ?>user_panel.php?q=logout" class="main-navigation__link">
+                      Wyloguj
+                    </a>
+                  </li>                 
             </ul>
             <button class="main-navigation__mobile-button js-main-navigation__mobile-button">
                <img src="../../images/navigation.svg" alt="Otwórz / zamknij nawigację" class="main-navigation__mobile-button-image">
             </button>
             </div>
         </nav>
-        <script src="../js/main-navigation.js"></script>
+        <script src="../../js/main-navigation.js"></script>
