@@ -6,7 +6,7 @@ include "../style/nawigacja.php";
 $user = new User();
  
 if ($user->getSession()===TRUE) {
-    header("location:index.html");
+    header("location:index.php");
 }
 $status = '';
  
