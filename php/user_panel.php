@@ -43,7 +43,7 @@ $userInfo = $user->getUserInfo();
     </section>
         <footer class="footer">
           <a href="#" class="footer__logo-link">
-            <img src="../../images/tytul.svg" alt="Logo" class="footer__logo-image">
+            <img src="../images/tytul.svg" alt="Logo" class="footer__logo-image">
         </a>
         </footer>
    
