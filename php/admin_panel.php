@@ -34,7 +34,7 @@ $userInfo = $user->getUserInfo();
 </div>
 </div>
 </div>
-
+<section>
 
 </section>
 <footer class="footer">

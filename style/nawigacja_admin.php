@@ -47,6 +47,11 @@
                       Moje konto
                     </a>
                   </li>
+                <li class="main-navigation__quizy-item">
+                    <a  href="../php/add_question.php" class="main-navigation__link">
+                        Stwórz pytanie
+                    </a>
+                </li>
                   <li class="main-navigation__quizy-item">
                     <a  href="../php/assent.php" class="main-navigation__link">
                       Akceptacja pytań
