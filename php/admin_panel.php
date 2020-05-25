@@ -14,9 +14,8 @@ if ($user->getSession()===FALSE) {
 }
 if (isset($_GET['q'])) {
     $user->logout();
-    header("location:../index.php");
+    header("location:/../index.php");
 }
-
 $user->setID($uid);
 $userInfo = $user->getUserInfo();
 

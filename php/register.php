@@ -6,15 +6,7 @@ include "../style/nawigacja.php";
 $user = new User();
  
 if ($user->getSession()===TRUE) {
-    header("location:../index.php");
-}
-if(@$_SESSION['login']){
-    if($_SESSION['rola']==="1"){
-        header("location:admin_panel.php");
-    }
-    else{
-        header("location:user_panel.php");
-    }
+    header("location:index.php");
 }
 $status = '';
  

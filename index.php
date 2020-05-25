@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,39 +42,16 @@
                     Quizy
                   </a>
                 </li>
-                <?php
-                include "php/class/User.php";
-                include "php/class/DBConnection.php";
-
-                $user = new User();
-                if (!empty($_SESSION['id'])) {
-                    $uid = $_SESSION['id'];
-
-                }
-                if (isset($_GET['q'])) {
-                    $user->logout();
-                    header("location:index.php");
-                }
-                if ($user->getSession() === FALSE) {
-                    echo"<li class=\"main-navigation__quizy-item\">
-                    <a  href=\"php/login.php\" class=\"main-navigation__link\">
+                <li class="main-navigation__quizy-item">
+                    <a  href="php/login.php" class="main-navigation__link">
                       Logowanie
                     </a>
                   </li>
-                  <li class=\"main-navigation__quizy-item\">
-                    <a  href=\"php/register.php\" class=\"main-navigation__link\">
+                  <li class="main-navigation__quizy-item">
+                    <a  href="php/register.php" class="main-navigation__link">
                       Rejestracja
                     </a>
-                  </li>";
-                }
-                else {
-                    echo "                  <li class=\"main-navigation__quizy-item\">
-                  <a href=\"index.php?q=logout\" class=\"main-navigation__link\">
-                      Wyloguj
-                    </a>
-                  </li> ";
-                };
-                ?>
+                  </li>
             </ul>
             <button class="main-navigation__mobile-button js-main-navigation__mobile-button">
                <img src="images/navigation.svg" alt="Otwórz / zamknij nawigację" class="main-navigation__mobile-button-image">
@@ -107,7 +83,12 @@
           <p class="bookmark__description">Poznaj nasze quizy i dołącz do zabawy</p>
         </section>
         <section>
+         <?php
+         
 
+
+
+         ?>
         </section>
         <footer class="footer">
           <a href="#" class="footer__logo-link">

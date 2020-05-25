@@ -10,13 +10,12 @@ if(!empty($_SESSION['id'])){
 
 }
 if ($user->getSession()===FALSE) {
-   header("location:../index.php");
+   header("location:/../index.php");
 }
 if (isset($_GET['q'])) {
     $user->logout();
     header("location:../index.php");
 }
-
 $user->setID($uid);
 $userInfo = $user->getUserInfo();
 
