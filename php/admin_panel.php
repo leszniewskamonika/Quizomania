@@ -23,11 +23,11 @@ $userInfo = $user->getUserInfo();
 ?>
 
 
-<div class="main-banner-login">
+<div class="main-banner-register">
     <div class="row">
 
         <div class="col-lg-10">
-            <h2>Witaj <?php print $userInfo['login'];?> w panelu administratora!</h2>
+            <h2 style="color: white">Witaj <?php print $userInfo['login'];?> w panelu administratora!</h2>
         </div>
 
     </div>

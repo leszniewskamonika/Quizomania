@@ -82,7 +82,7 @@ if(isset($_POST['submit'])){
                 <input type="password" name="uhaslo" class="form-control" placeholder="Hasło"></input>
             </div>
                 <button type="submit" name="submit" class="float-right btn btn-primary">Zarejestruj</button>
-                <a href="<?php print SITE_URL; ?>login.php">Zarejestrowany? To co tu robisz? Zaloguj się!</a>
+                <a href="<?php print SITE_URL; ?>login.php" style="color: white">Zarejestrowany? To co tu robisz? Zaloguj się!</a>
             </form>
         </div>
     </div>

@@ -27,13 +27,13 @@ $userInfo = $user->getUserInfo();
         <div class="row">
             
                 
-            <p class="text-light display-1">Witaj w panelu użytkownika</hp>
+            <p class="text-light display-1" style="color: white">Witaj w panelu użytkownika</hp>
     
         <div class="col-lg-10">
-            <h2>Witaj <?php print $userInfo['login'];?></h2>                 
+            <h2 style="color: white">Witaj <?php print $userInfo['login'];?></h2>                 
         </div>
         <div class="col-lg-2">
-            <a href="<?php print SITE_URL; ?>user_panel.php?q=logout" class="logout">LOGOUT</a>
+            <a href="<?php print SITE_URL; ?>user_panel.php?q=logout" class="logout" style="color: white">LOGOUT</a>
         </div>
     </div>
   </div>
