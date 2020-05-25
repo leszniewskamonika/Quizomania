@@ -16,6 +16,7 @@
         <link href="../css/footer.css" rel="stylesheet"> 
         <link href="../css/main-banner-register.css" rel="stylesheet">
         <link href="../css/main-banner-login.css" rel="stylesheet">
+        <link href="../css/input-group mb-3.css" rel="stylesheet">
         
     </head>
     <body>
