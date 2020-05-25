@@ -69,7 +69,21 @@
                   </li>";
                 }
                 else {
-                    echo "                  <li class=\"main-navigation__quizy-item\">
+                            if($_SESSION['rola']==="1"){
+                                echo "<li class=\"main-navigation__quizy-item\">
+                              <a href=\"php/admin_panel.php\" class=\"main-navigation__link\">
+                                  Moje konto
+                                </a>
+                              </li> ";
+                            }
+                            else {
+                                echo "<li class=\"main-navigation__quizy-item\" >
+                              <a href=\"php/user_panel.php\" class=\"main-navigation__link\">
+                                  Moje konto
+                                </a>
+                              </li> ";
+                            };
+                            echo "<li class=\"main-navigation__quizy-item\">
                   <a href=\"index.php?q=logout\" class=\"main-navigation__link\">
                       Wyloguj
                     </a>
