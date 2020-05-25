@@ -29,9 +29,3 @@ input[type=email]{
     border-radius: 4px;
 }
 
-button[type=submit]{
-    background-color: white;
-    margin: 10px 0px;
-    width: 100%;
-    border-radius: 4px;
-}

@@ -37,18 +37,22 @@ if (isset($_POST['submit'])) {
         <?php if(!empty($msg)){ 
                 echo '<div class="alert alert-danger">Wrong username or password</div>';
        } ?>    
-    </div>   
-            <div class="input-group__mb-3">
+    </div>
+        <form action="" method="post" name="login">    
+            <div class="input-group mb-3">
                 <input type="text" name="emailusername" class="form-control" placeholder="Username/Email">
             </div>
             
-            <div class="input-group__mb-3">
-                <input type="password" name="password" class="form-control" placeholder="******">        
+            <div class="input-group mb-3">
+                <input type="password" name="password" class="form-control" placeholder="****">        
             </div>
             
-            <button type="submit" name="submit" class="float-right btn btn-primary">Zaloguj</button>
-            <a href="<?php print SITE_URL; ?>register.php">Zarejestruj się</a>               
-       </form>
+            <button type="submit" name="submit" class="float-right btn btn-primary">Login</button>
+            <a href="<?php print SITE_URL; ?>register.php">Zarejestruj się</a>
+        </form>
+    </div>
+</div>
+</div>
 </section>
         <footer class="footer">
           <a href="#" class="footer__logo-link">
@@ -56,6 +60,5 @@ if (isset($_POST['submit'])) {
         </a>
         </footer>
       </body>
-      </html>   
-
+      </html>
       
