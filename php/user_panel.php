@@ -1,7 +1,7 @@
 <?php
-include "User.php";
-include "DBConnection.php";
-include "../../style/nawigacja_user.php";
+include "class/User.php";
+include "class/DBConnection.php";
+include "../style/nawigacja_user.php";
 
 
 $user = new User();
@@ -10,11 +10,11 @@ if(!empty($_SESSION['id'])){
 
 }
 if ($user->getSession()===FALSE) {
-   header("location:../../index.php");
+   header("location:/../index.php");
 }
 if (isset($_GET['q'])) {
     $user->logout();
-    header("location:../../index.php");
+    header("location:../index.php");
 }
 $user->setID($uid);
 $userInfo = $user->getUserInfo();
