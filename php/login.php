@@ -10,7 +10,7 @@ if(@$_SESSION['login']){
     header("location:admin_panel.php");
   } 
   else{
-    header("location:../php/class/user_panel.php");
+    header("location:user_panel.php");
   }
 }
 if (isset($_POST['submit'])) {
@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
         header("location:admin_panel.php");
       } 
       else{
-        header("location:../php/class/user_panel.php");
+        header("location:user_panel.php");
       }     
 
     } else {            
