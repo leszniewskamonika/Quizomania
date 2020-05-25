@@ -32,27 +32,29 @@ if (isset($_POST['submit'])) {
 
 ?>
 
+<<<<<<< Updated upstream
 <section class="main-banner-login">
+=======
+<section class="main-banner-register">
+    
+        <form action="" method="post" name="login"> 
+>>>>>>> Stashed changes
         <div class="col">
         <?php if(!empty($msg)){ 
                 echo '<div class="alert alert-danger">Wrong username or password</div>';
        } ?>    
-    </div>
-        <form action="" method="post" name="login">    
-            <div class="input-group mb-3">
+    </div>   
+            <div class="input-group__mb-3">
                 <input type="text" name="emailusername" class="form-control" placeholder="Username/Email">
             </div>
             
-            <div class="input-group mb-3">
+            <div class="input-group__mb-3">
                 <input type="password" name="password" class="form-control" placeholder="******">        
             </div>
             
-            <button type="submit" name="submit" class="float-right btn btn-primary">Login</button>
-            <a href="<?php print SITE_URL; ?>register.php">Zarejestruj się</a>
-        </form>
-    </div>
-</div>
-</div>
+            <button type="submit" name="submit" class="float-right btn btn-primary">Zaloguj</button>
+            <a href="<?php print SITE_URL; ?>register.php">Zarejestruj się</a>               
+       </form>
 </section>
         <footer class="footer">
           <a href="#" class="footer__logo-link">

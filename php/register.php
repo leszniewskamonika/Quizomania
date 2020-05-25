@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
 ?>
 
         <section class="main-banner-register">
-    <h1 >Zarejestruj się</h1>
+  
 <div><?php echo $status; ?></div>
 <div class="row">
     <div class="col-lg-12"><ul><?php
