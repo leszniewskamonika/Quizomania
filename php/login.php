@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<section class="main-banner-login">
+<section class="main-banner-register">
         <div class="col">
         <?php if(!empty($msg)){ 
                 echo '<div class="alert alert-danger">Wrong username or password</div>';

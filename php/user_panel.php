@@ -22,7 +22,7 @@ $userInfo = $user->getUserInfo();
 ?>
 
 
-      <div class="main-banner-login">
+      <div class="main-banner-register">
         <div class="row">
             
                 
