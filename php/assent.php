@@ -43,7 +43,7 @@ header('location:assent.php');
         <?php
         //var_dump($question_display);
             if (empty($question_display)){
-                echo "Nie masz żadnych pytań do zaakceptowania";
+                echo "<p style='color: white'>Nie masz żadnych pytań do zaakceptowania</p>";
             }
             else{
                 foreach ($question_display as $row) {
@@ -54,11 +54,11 @@ header('location:assent.php');
                     $ca = substr($row['correct_answer'],0,500);
                     $id = $row['id'];
                     echo "<div><form action='' method='POST'>";
-                    echo "<p>Pytanie: $q </p>" ;
-                    echo "<p>Odpowiedź A: $a</p>";
-                    echo "<p>Odpowiedź B: $b</p>";
-                    echo "<p>Odpowiedź C: $c</p>";
-                    echo "<p>Poprawna odpowiedź: $ca</p>";
+                    echo "<p style='color: white'>Pytanie: $q </p>" ;
+                    echo "<p style='color: white'>Odpowiedź A: $a</p>";
+                    echo "<p style='color: white'>Odpowiedź B: $b</p>";
+                    echo "<p style='color: white'>Odpowiedź C: $c</p>";
+                    echo "<p style='color: white'>Poprawna odpowiedź: $ca</p>";
                     echo "<button type=\"submit\" name='submit' value=\"$id\">ZAAKCEPTUJ</button>";
                     echo "<br> ____________________________________________________________________________";
                     echo "</div></form>";
