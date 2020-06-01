@@ -29,3 +29,8 @@ input[type=email]{
     border-radius: 4px;
 }
 
+button[type=submit]{
+    margin: 10px 0px;
+    width:100%;
+}
+

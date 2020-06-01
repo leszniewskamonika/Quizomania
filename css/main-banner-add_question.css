@@ -1,13 +1,15 @@
-.main-banner-register{
+.main-banner-add_question{
     background: url("../images/start_optimized.jpg");
     height: auto;
     background-position: center center;
-    background-size: cover;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    
 }
-
-
-
+.forma{
+    height: 23vh;
+    padding: 0vw;
+    background-position: center;
+    
+}

@@ -2,6 +2,7 @@
 include "class/Question.php";
 include "class/DBConnection.php";
 include "class/User.php";
+include "../style/nawigacja_admin.php";
 
 $user = new User();
 if ($user->getSession()===FALSE) {
@@ -62,22 +63,24 @@ if(isset($_POST['submit'])){
 }
 
 ?>
+<section class="main-banner-add_question">
 
-Dodawanie pytania do bazy danych
 
+    
     <div class="row">
         <div class="col-lg-12"><?php echo $status; ?></div>
     </div>
-    <div class="row">
+    
+    <div class="row"><section class="forma"></section>
         <div class="col-lg-12"><ul><?php
                 foreach ($errors as $value) {
-                    echo '<li style="color: red; font-size: 13px;">'.$value.'</li>' ;
+                    echo '<li style="color: red; font-size: 16px;">'.$value.'</li>' ;
                 }
                 ?></ul></div>
 
             <form action="" method="post" name="add" enctype="multipart/form-data">
                 <div>
-                    <label for="id_category">Kategoria pytania</label>
+                    <label for="id_category"><h3 style="color: white">Kategoria pytania</label>
                     <select name="uid_category">
                         <option value="1">GEOGRAFIA</option>
                         <option value="2">HISTORIA</option>
@@ -89,30 +92,30 @@ Dodawanie pytania do bazy danych
                         <option value="8">LOGIKA</option>
                     </select>
                 </div>
-            <br>
+            
                 <div>
-                    <br>
-                    Pytanie:<br> <textarea name="uquestion" rows="10" cols="30" class="form-control"></textarea>
+                    
+                    <h3 style="color: white">Pytanie:</h3><textarea name="uquestion" rows="5" cols="40" class="form-control"></textarea>
                     </select>
                 </div>
                 <div>
                     <br>
-                    Odpowiedź A:<br> <textarea name="uanswerA" rows="10" cols="30" class="form-control"></textarea>
+                    <h3 style="color: white">Odpowiedź A:</h3><textarea name="uanswerA" rows="5" cols="40" class="form-control"></textarea>
                     </select>
                 </div>
                 <div>
                     <br>
-                    Odpowiedź B:<br> <textarea name="uanswerB" rows="10" cols="30" class="form-control"></textarea>
+                    <h3 style="color: white">Odpowiedź B:</h3><textarea name="uanswerB" rows="5" cols="40" class="form-control"></textarea>
                     </select>
                 </div>
                 <div>
                     <br>
-                    Odpowiedź C:<br> <textarea name="uanswerC" rows="10" cols="30" class="form-control"></textarea>
+                    <h3 style="color: white">Odpowiedź C:</h3><textarea name="uanswerC" rows="5" cols="40" class="form-control"></textarea>
                     </select>
                 </div>
                 <div>
                     <br>
-                    Poprawna odpwoiedź: <select name="ucorrect_answer">
+                    <h3 style="color: white">Poprawna odpowiedź: <select name="ucorrect_answer">
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>
@@ -121,9 +124,16 @@ Dodawanie pytania do bazy danych
                 <br>
                 <div class="form-group">
                     <button type="submit" name="submit" >Dodaj pytanie</button>
-                </div>
+                </div><br>
             </form>
-        <a href="../index.php">Wróć na stronę główną</a>
         </div>
     </div>
 </div>
+ </section>
+ <footer class="footer">
+    <a href="#" class="footer__logo-link">
+        <img src="../images/tytul.svg" alt="Logo" class="footer__logo-image">
+    </a>
+</footer>
+
+
