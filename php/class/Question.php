@@ -52,11 +52,24 @@ class Question
         $result = $this->db->query($query) or die($this->db->error);
         $count_row = $result->num_rows;
         if ($count_row == 1) {
-            $animal_data = $result->fetch_array(MYSQLI_ASSOC);
-            return $animal_data;
+            $question_data = $result->fetch_array(MYSQLI_ASSOC);
+            return $question_data;
         }else{
             return false;
         }
+    }
+
+    public function getQuestionNoAssent()
+    {
+        $query = "SELECT * FROM qanda WHERE assent = '0'";
+        $result = $this->db->query($query) or die($this->db->error);
+        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+            $rowi[] = $row;
+        }
+        if (!empty($rowi))
+
+            return $rowi;
+
     }
 
     // Add Question Method
