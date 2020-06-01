@@ -1,6 +1,6 @@
 .main-banner-login{
-    background: url("../../images/start_optimized.jpg");
-    height: 90vh;
+   background: url("../images/start_optimized.jpg");
+    height: auto;
     background-position: center center;
     background-size: cover;
 
@@ -8,27 +8,3 @@
     align-items: center;
     justify-content: center;
 }
-@media (max-width: 1240px){
-    .main-banner-login{
-        background: url("../images/start_optimized.jpg");
-        height: 60vh;
-        background-position: center center;
-        background-size: cover;
-    }   
-}
-@media (max-width: 640px){
-    .main-banner-login{
-         background: url("../images/start_optimized.jpg");
-         height: 130vh;
-         background-position: center center;
-         background-size: cover;
-    }
-}
-    @media (max-width: 360px){
-        .main-banner-login{
-             background: url("../images/start_optimized.jpg");
-             height: 60vh;
-             background-position: center center;
-             background-size: cover;
-        }
-    }

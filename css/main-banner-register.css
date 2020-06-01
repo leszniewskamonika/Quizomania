@@ -1,6 +1,6 @@
 .main-banner-register{
-    background: url("../images/start.jpg");
-    height: 90vh;
+    background: url("../images/start_optimized.jpg");
+    height: auto;
     background-position: center center;
     background-size: cover;
 
@@ -8,3 +8,6 @@
     align-items: center;
     justify-content: center;
 }
+
+
+

@@ -60,14 +60,10 @@ if(isset($_POST['submit'])){
   
 <div><?php echo $status; ?></div>
 <div class="row">
-    <div class="col-lg-12"><ul><?php
-            foreach ($errors as $value) {
-                echo '<li style="color: red; font-size: 13px;">'.$value.'</li>' ;
-            }
-            ?></ul></div>
+   
 </div>
 
-            <form action="" method="post" name="reg" enctype="multipart/form-data">
+            <form class="form" action="" method="post" name="reg" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="imie" style="color: white">Adres email</label>
@@ -85,6 +81,11 @@ if(isset($_POST['submit'])){
                 <a href="<?php print SITE_URL; ?>login.php" style="color: white">Zarejestrowany? To co tu robisz? Zaloguj się!</a>
             </form>
         </div>
+        <div class="col-lg-12"><ul><?php
+            foreach ($errors as $value) {
+                echo '<li style="color: red; font-size: 16px;">'.$value.'</li>' ;
+            }
+            ?></ul></div>
     </div>
 </div>
 </section>
