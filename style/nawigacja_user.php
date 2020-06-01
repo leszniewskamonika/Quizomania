@@ -53,10 +53,7 @@
                         Stwórz pytanie
                     </a>
                 </li>
-                  <li class="main-navigation__quizy-item">
-                    <a  href="../php/register.php" class="main-navigation__link">
-                      Rejestracja
-                    </a>
+                  
 
                   
 

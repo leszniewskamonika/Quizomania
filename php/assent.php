@@ -34,11 +34,11 @@ header('location:assent.php');
 ?>
 
 
-<div class="main-banner-login">
+<div class="main-banner-register">
     <div class="row">
 
         <div class="col-lg-10">
-            <h2>Pytania do zaakceptowania: </h2>
+            <h2 style="color: white">Pytania do zaakceptowania: </h2>
 
         <?php
         //var_dump($question_display);
