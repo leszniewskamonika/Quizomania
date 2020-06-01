@@ -47,10 +47,7 @@
                       Moje konto
                     </a>
                   </li>
-                  <li class="main-navigation__quizy-item">
-                    <a  href="../php/register.php" class="main-navigation__link">
-                      Rejestracja
-                    </a>
+                  
                   </li>
                   <li class="main-navigation__quizy-item">
                   <a href="<?php print SITE_URL; ?>user_panel.php?q=logout" class="main-navigation__link">
