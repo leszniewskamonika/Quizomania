@@ -70,15 +70,15 @@ if(isset($_POST['submit'])){
             <form action="" method="post" name="reg" enctype="multipart/form-data">
 
             <div class="form-group">
-                <label for="imie">Adres email</label>
+                <label for="imie" style="color: white">Adres email</label>
                 <input type="email" name="uemail" class="form-control" placeholder="Adres email"></input>
             </div>
             <div class="form-group">
-                <label for="imie">Login w serwisie</label>
+                <label for="imie" style="color: white">Login w serwisie</label>
                 <input type="text" name="ulogin" class="form-control" placeholder="Twój login w serwisie"></input>
             </div>
             <div class="form-group">
-                <label for="imie">Twoje hasło</label>
+                <label for="imie" style="color: white">Twoje hasło</label>
                 <input type="password" name="uhaslo" class="form-control" placeholder="Hasło"></input>
             </div>
                 <button type="submit" name="submit" class="float-right btn btn-primary">Zarejestruj</button>
