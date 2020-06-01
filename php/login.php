@@ -33,6 +33,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 <section class="main-banner-register">
+
         
         <form action="" method="post" name="login">    
             <div class="input-group mb-3">
@@ -50,6 +51,8 @@ if (isset($_POST['submit'])) {
                 echo '<div class="alert alert-danger" style="color: red">Wrong username or password</div>';
        } ?>    
     </div></from>
+<div class="row">
+       
     </div>
 </div>
 </div>

@@ -60,6 +60,7 @@ if(isset($_POST['submit'])){
   
 <div><?php echo $status; ?></div>
 <div class="row">
+
    
 </div>
 
@@ -80,12 +81,11 @@ if(isset($_POST['submit'])){
                 <button type="submit" name="submit" class="float-right btn btn-primary">Zarejestruj</button>
                 <a href="<?php print SITE_URL; ?>login.php" style="color: white">Zarejestrowany? To co tu robisz? Zaloguj się!</a>
             </form>
-        </div>
-        <div class="col-lg-12"><ul><?php
+        </div><div class="col-lg-12"><ul><?php
             foreach ($errors as $value) {
                 echo '<li style="color: red; font-size: 16px;">'.$value.'</li>' ;
             }
-            ?></ul></div>
+            ?></ul></div>       
     </div>
 </div>
 </section>
