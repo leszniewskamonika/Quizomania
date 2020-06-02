@@ -1,5 +1,5 @@
-.bookmark{
-    background-image: url("../images/start_optimized.jpg");
+.bookmark__prl{
+    background-image: url("../images/prl.jpg");
     background-size: cover;
     background-position: center center;
     color: white;
@@ -19,19 +19,8 @@
     }
 }
 
-.bookmark__description{
-    font-size: 24px;
-    margin: 0;
-}
-@media (max-width: 767px){
-    .bookmark__description{
-        font-size: 16px;
-    }
-}
-
 .bookmark__header::after,
 .bookmark__header::before{
 content: " - ";
 font-weight: normal;
-
 }

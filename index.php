@@ -15,6 +15,14 @@
         <link href="css/main-navigation.css" rel="stylesheet">
         <link href="css/bookmark.css" rel="stylesheet">
         <link href="css/footer.css" rel="stylesheet">
+        <link href="css/bookmark__geografia.css" rel="stylesheet">
+        <link href="css/bookmark__historia.css" rel="stylesheet">
+        <link href="css/bookmark__prl.css" rel="stylesheet">
+        <link href="css/bookmark__jezyki.css" rel="stylesheet">
+        <link href="css/bookmark__przyroda.css" rel="stylesheet">
+        <link href="css/bookmark__ksiazka.css" rel="stylesheet">
+        <link href="css/bookmark__film.css" rel="stylesheet">
+        <link href="css/bookmark__logika.css" rel="stylesheet">
         
         
         
@@ -120,9 +128,38 @@
           <h2 class="bookmark__header">Quizy</h2>
           <p class="bookmark__description">Poznaj nasze quizy i dołącz do zabawy</p>
         </section>
-        <section>
+        <section class="bookmark__geografia">
+        <h2 class="bookmark__header">Geografia</h2>
+       
+        </section>
+        <section class="bookmark__historia">
+          <h2 Class="bookmark__header">Historia</h2>
 
         </section>
+        <section class="bookmark__prl">
+          <h2 class="bookmark__header">PRL</h2>
+
+        </section>
+        <section class="bookmark__jezyki">
+          <h2 class="bookmark__header">Języki</h2>
+
+        </section>
+        <section class="bookmark__przyroda">
+          <h2 class="bookmark__header">Przyroda</h2>
+
+        </section>
+        <section class="bookmark__ksiazka">
+          <h2 class="bookmark__header">Książka</h2>
+
+        </section>
+        <section class="bookmark__film">
+          <h2 class="bookmark__header">Film</h2>
+
+         </section>
+         <section class="bookmark__logika">
+           <h2 class="bookmark__header">Logika</h2>
+
+        </section>  
         <footer class="footer">
           <a href="#" class="footer__logo-link">
             <img src="images/tytul.svg" alt="Logo" class="footer__logo-image">
