@@ -4,6 +4,7 @@ include "class/DBConnection.php";
 include "class/User.php";
 include "../style/nawigacja_admin.php";
 
+
 $user = new User();
 if ($user->getSession()===FALSE) {
     header("location:/../index.php");

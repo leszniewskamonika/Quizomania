@@ -18,6 +18,7 @@
         <link href="../css/main-banner-login.css" rel="stylesheet">
         <link href="../css/main-banner-add_question.css" rel="stylesheet">
         
+        
     </head>
     <body>
         <nav class="main-navigation">
@@ -53,11 +54,27 @@
                         Stwórz pytanie
                     </a>
                 </li>
-                  <li class="main-navigation__quizy-item">
-                    <a  href="../php/assent.php" class="main-navigation__link">
-                      Akceptacja pytań
-                    </a>
-                  </li>
+               <?php
+             
+
+               $user = new User();
+                if (!empty($_SESSION['id'])) {
+                    $uid = $_SESSION['id'];
+
+                }
+                if($_SESSION['rola']==="1"){
+                  echo "<li class=\"main-navigation__quizy-item\">
+                <a href=\"assent.php\" class=\"main-navigation__link\">
+                    Akceptacja pytań
+                  </a>
+                </li> ";
+              }
+              else {
+                
+              };
+                
+                  ?>
+                  
                   <li class="main-navigation__quizy-item">
                   <a href="<?php print SITE_URL; ?>admin_panel.php?q=logout" class="main-navigation__link">
                       Wyloguj
