@@ -10,6 +10,12 @@
 
     margin: 5px;
 }
+@media(max-width: 760px){
+    .pytanie{
+        width: 340px;
+        margin: 0;
+    }
+}
 
 .nrpytania{
     background-color: #ccc;

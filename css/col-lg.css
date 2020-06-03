@@ -6,9 +6,21 @@
      position: center;
      margin: auto;
 }
+ @media(max-width: 1240x){
+     .col-lg-10{
+         width: 100%;
+         margin: 0;
+         position: center;
+     }
+ }
  @media(max-width: 1190px){
      .col-lg-10{
          width: 100%;
          margin: 0;
      }
+ }
+
+ .row{
+     background-image: url("../images/start_optimized.jpg");
+     height: auto;
  }
