@@ -85,5 +85,18 @@ class Question
         $result = $this->db->query($query) or die($this->db->error);
         return true;
     }
+
+    public function getQuestionAssentGeografia()
+    {
+        $query = "SELECT * FROM qanda WHERE assent = '1' AND id_category = '1'";
+        $result = $this->db->query($query) or die($this->db->error);
+        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+            $rows[] = $row;
+        }
+        if (!empty($rows))
+
+            return $rows;
+
+    }
 }
 ?>

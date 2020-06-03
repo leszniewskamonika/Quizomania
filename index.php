@@ -130,8 +130,36 @@
         </section>
         <section class="bookmark__geografia">
         <h2 class="bookmark__header">Geografia</h2>
-       
         </section>
+        <?php
+        include "php/class/Question.php";
+
+        $question = new Question();
+        $question_display = $question->getQuestionAssentGeografia();
+        ?>
+        <div class="row">
+
+        <div class="col-lg-10">
+            <h2 style="color: white">Pytania do zaakceptowania: </h2>
+
+        <?php
+        //var_dump($question_display);
+            if (empty($question_display)){
+                echo "<p style='color: black'>Nie masz żadnych pytań w tej kategorii</p>";
+            }
+            else{
+                foreach ($question_display as $row) {
+                    $q = substr($row['question'],0,500); 
+                    $id = $row['id'];
+                    echo "<div><form action='' method='POST'>";
+                    echo "<p style='color: black'>Pytanie: $q </p>" ;
+                    echo "<br> ____________________________________________________________________________";
+                    echo "</div></form>";
+                }
+            }
+        ?>
+        </div>
+    </div>
         <section class="bookmark__historias">
           <h2 Class="bookmark__header">Historia</h2>
           
