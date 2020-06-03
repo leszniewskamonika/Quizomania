@@ -1,0 +1,14 @@
+.col-lg-10{
+     display: block;
+     padding: 10px;
+     width: 700px;
+
+     position: center;
+     margin: auto;
+}
+ @media(max-width: 1190px){
+     .col-lg-10{
+         width: 100%;
+         margin: 0;
+     }
+ }

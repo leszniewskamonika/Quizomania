@@ -23,7 +23,8 @@
         <link href="css/bookmark__ksiazka.css" rel="stylesheet">
         <link href="css/bookmark__film.css" rel="stylesheet">
         <link href="css/bookmark__logika.css" rel="stylesheet">
-        
+        <link href="css/col-lg.css" rel="stylesheet">
+        <link href="css/pytanie.css" rel="stylesheet">
         
         
     </head>
@@ -151,10 +152,11 @@
                 foreach ($question_display as $row) {
                     $q = substr($row['question'],0,500); 
                     $id = $row['id'];
-                    echo "<div><form action='' method='POST'>";
-                    echo "<p style='color: black'>Pytanie: $q </p>" ;
-                    echo "<br> ____________________________________________________________________________";
+                    echo "<div class='nrpytania'>&nbspPytanie: </div>";
+                    echo "<div class='pytanie'><form action='' method='POST'>";
+                    echo "<p style='color: black'> &nbsp $q </p>" ;
                     echo "</div></form>";
+                    echo "<br>";
                 }
             }
         ?>
@@ -181,10 +183,11 @@
                 foreach ($question_display as $row) {
                     $q = substr($row['question'],0,500); 
                     $id = $row['id'];
-                    echo "<div><form action='' method='POST'>";
-                    echo "<p style='color: black'>Pytanie: $q </p>" ;
-                    echo "<br> ____________________________________________________________________________";
+                    echo "<div class='nrpytania'>&nbspPytanie: </div>";
+                    echo "<div class='pytanie'><form action='' method='POST'>";
+                    echo "<p style='color: black'>&nbsp $q </p>" ;
                     echo "</div></form>";
+                    echo "<br>";
                 }
             }
         ?>
@@ -211,10 +214,11 @@
                 foreach ($question_display as $row) {
                     $q = substr($row['question'],0,500); 
                     $id = $row['id'];
-                    echo "<div><form action='' method='POST'>";
-                    echo "<p style='color: black'>Pytanie: $q </p>" ;
-                    echo "<br> ____________________________________________________________________________";
+                    echo "<div class='nrpytania'>&nbspPytanie: </div>";
+                    echo "<div class='pytanie'><form action='' method='POST'>";
+                    echo "<p style='color: black'>&nbsp $q </p>" ;
                     echo "</div></form>";
+                    echo "<br>";
                 }
             }
         ?>
@@ -241,10 +245,11 @@
                 foreach ($question_display as $row) {
                     $q = substr($row['question'],0,500); 
                     $id = $row['id'];
-                    echo "<div><form action='' method='POST'>";
-                    echo "<p style='color: black'>Pytanie: $q </p>" ;
-                    echo "<br> ____________________________________________________________________________";
+                    echo "<div class='nrpytania'>&nbspPytanie: </div>";
+                    echo "<div class='pytanie'><form action='' method='POST'>";
+                    echo "<p style='color: black'>&nbsp $q </p>" ;
                     echo "</div></form>";
+                    echo "<br>";
                 }
             }
         ?>
@@ -271,10 +276,11 @@
                 foreach ($question_display as $row) {
                     $q = substr($row['question'],0,500); 
                     $id = $row['id'];
-                    echo "<div><form action='' method='POST'>";
-                    echo "<p style='color: black'>Pytanie: $q </p>" ;
-                    echo "<br> ____________________________________________________________________________";
+                    echo "<div class='nrpytania'>&nbspPytanie: </div>";
+                    echo "<div class='pytanie'><form action='' method='POST'>";
+                    echo "<p style='color: black'>&nbsp $q </p>" ;
                     echo "</div></form>";
+                    echo "<br>";
                 }
             }
         ?>
@@ -301,10 +307,11 @@
                 foreach ($question_display as $row) {
                     $q = substr($row['question'],0,500); 
                     $id = $row['id'];
-                    echo "<div><form action='' method='POST'>";
-                    echo "<p style='color: black'>Pytanie: $q </p>" ;
-                    echo "<br> ____________________________________________________________________________";
+                    echo "<div class='nrpytania'>&nbspPytanie: </div>";
+                    echo "<div class='pytanie'><form action='' method='POST'>";
+                    echo "<p style='color: black'>&nbsp $q </p>" ;
                     echo "</div></form>";
+                    echo "<br>";
                 }
             }
         ?>
@@ -331,10 +338,11 @@
                 foreach ($question_display as $row) {
                     $q = substr($row['question'],0,500); 
                     $id = $row['id'];
-                    echo "<div><form action='' method='POST'>";
-                    echo "<p style='color: black'>Pytanie: $q </p>" ;
-                    echo "<br> ____________________________________________________________________________";
+                    echo "<div class='nrpytania'>&nbspPytanie: </div>";
+                    echo "<div class='pytanie'><form action='' method='POST'>";
+                    echo "<p style='color: black'>&nbsp $q </p>";
                     echo "</div></form>";
+                    echo "<br>";
                 }
             }
         ?>
@@ -361,10 +369,11 @@
                 foreach ($question_display as $row) {
                     $q = substr($row['question'],0,500); 
                     $id = $row['id'];
-                    echo "<div><form action='' method='POST'>";
-                    echo "<p style='color: black'>Pytanie: $q </p>" ;
-                    echo "<br> ____________________________________________________________________________";
+                    echo "<div class='nrpytania'>&nbspPytanie: </div>";
+                    echo "<div class='pytanie'><form action='' method='POST'>";
+                    echo "<p style='color: black'>&nbsp $q </p>" ;
                     echo "</div></form>";
+                    echo "<br>";
                 }
             }
         ?>

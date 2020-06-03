@@ -1,0 +1,25 @@
+.pytanie{
+    background-color: #ccc;
+    width: 700px;
+    height: auto;
+    
+    border: 2px solid blue;
+
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    margin: 5px;
+}
+
+.nrpytania{
+    background-color: #ccc;
+    width: 100px;
+    height: auto;
+
+    border: 2px solid green;
+
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    margin: 5px;
+}
