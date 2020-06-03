@@ -1,5 +1,5 @@
-.bookmark__historia{
-    background-image: url("../images/historia.jpg");
+.bookmark__historias{
+    background-image: url("../images/historias-min.jpg");
     background-size: cover;
     background-position: center center;
     color: white;
@@ -23,5 +23,4 @@
 .bookmark__header::before{
 content: " - ";
 font-weight: normal;
-
 }

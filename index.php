@@ -16,7 +16,7 @@
         <link href="css/bookmark.css" rel="stylesheet">
         <link href="css/footer.css" rel="stylesheet">
         <link href="css/bookmark__geografia.css" rel="stylesheet">
-        <link href="css/bookmark__historia.css" rel="stylesheet">
+        <link href="css/bookmark__historias.css" rel="stylesheet">
         <link href="css/bookmark__prl.css" rel="stylesheet">
         <link href="css/bookmark__jezyki.css" rel="stylesheet">
         <link href="css/bookmark__przyroda.css" rel="stylesheet">
@@ -132,8 +132,9 @@
         <h2 class="bookmark__header">Geografia</h2>
        
         </section>
-        <section class="bookmark__historia">
+        <section class="bookmark__historias">
           <h2 Class="bookmark__header">Historia</h2>
+          
 
         </section>
         <section class="bookmark__prl">
