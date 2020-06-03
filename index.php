@@ -140,7 +140,7 @@
         <div class="row">
 
         <div class="col-lg-10">
-            <h2 style="color: white">Pytania do zaakceptowania: </h2>
+           
 
         <?php
         //var_dump($question_display);
@@ -162,33 +162,214 @@
     </div>
         <section class="bookmark__historias">
           <h2 Class="bookmark__header">Historia</h2>
-          
-
         </section>
+        <?php
+        $question = new Question();
+        $question_display = $question->getQuestionAssentHistoria();
+        ?>
+        <div class="row">
+
+        <div class="col-lg-10">
+            
+
+        <?php
+        //var_dump($question_display);
+            if (empty($question_display)){
+                echo "<p style='color: black'>Nie masz żadnych pytań w tej kategorii</p>";
+            }
+            else{
+                foreach ($question_display as $row) {
+                    $q = substr($row['question'],0,500); 
+                    $id = $row['id'];
+                    echo "<div><form action='' method='POST'>";
+                    echo "<p style='color: black'>Pytanie: $q </p>" ;
+                    echo "<br> ____________________________________________________________________________";
+                    echo "</div></form>";
+                }
+            }
+        ?>
+        </div>
+    </div>
         <section class="bookmark__prl">
           <h2 class="bookmark__header">PRL</h2>
-
         </section>
+        <?php
+        $question = new Question();
+        $question_display = $question->getQuestionAssentPrl();
+        ?>
+        <div class="row">
+
+        <div class="col-lg-10">
+            
+
+        <?php
+        //var_dump($question_display);
+            if (empty($question_display)){
+                echo "<p style='color: black'>Nie masz żadnych pytań w tej kategorii</p>";
+            }
+            else{
+                foreach ($question_display as $row) {
+                    $q = substr($row['question'],0,500); 
+                    $id = $row['id'];
+                    echo "<div><form action='' method='POST'>";
+                    echo "<p style='color: black'>Pytanie: $q </p>" ;
+                    echo "<br> ____________________________________________________________________________";
+                    echo "</div></form>";
+                }
+            }
+        ?>
+        </div>
+    </div>
         <section class="bookmark__jezyki">
           <h2 class="bookmark__header">Języki</h2>
-
         </section>
+        <?php
+        $question = new Question();
+        $question_display = $question->getQuestionAssentJezyki();
+        ?>
+        <div class="row">
+
+        <div class="col-lg-10">
+          
+
+        <?php
+        //var_dump($question_display);
+            if (empty($question_display)){
+                echo "<p style='color: black'>Nie masz żadnych pytań w tej kategorii</p>";
+            }
+            else{
+                foreach ($question_display as $row) {
+                    $q = substr($row['question'],0,500); 
+                    $id = $row['id'];
+                    echo "<div><form action='' method='POST'>";
+                    echo "<p style='color: black'>Pytanie: $q </p>" ;
+                    echo "<br> ____________________________________________________________________________";
+                    echo "</div></form>";
+                }
+            }
+        ?>
+        </div>
+    </div>
         <section class="bookmark__przyroda">
           <h2 class="bookmark__header">Przyroda</h2>
-
         </section>
+        <?php
+        $question = new Question();
+        $question_display = $question->getQuestionAssentPrzyroda();
+        ?>
+        <div class="row">
+
+        <div class="col-lg-10">
+          
+
+        <?php
+        //var_dump($question_display);
+            if (empty($question_display)){
+                echo "<p style='color: black'>Nie masz żadnych pytań w tej kategorii</p>";
+            }
+            else{
+                foreach ($question_display as $row) {
+                    $q = substr($row['question'],0,500); 
+                    $id = $row['id'];
+                    echo "<div><form action='' method='POST'>";
+                    echo "<p style='color: black'>Pytanie: $q </p>" ;
+                    echo "<br> ____________________________________________________________________________";
+                    echo "</div></form>";
+                }
+            }
+        ?>
+        </div>
+    </div>
         <section class="bookmark__ksiazka">
           <h2 class="bookmark__header">Książka</h2>
-
         </section>
+        <?php
+        $question = new Question();
+        $question_display = $question->getQuestionAssentKsiazka();
+        ?>
+        <div class="row">
+
+        <div class="col-lg-10">
+          
+
+        <?php
+        //var_dump($question_display);
+            if (empty($question_display)){
+                echo "<p style='color: black'>Nie masz żadnych pytań w tej kategorii</p>";
+            }
+            else{
+                foreach ($question_display as $row) {
+                    $q = substr($row['question'],0,500); 
+                    $id = $row['id'];
+                    echo "<div><form action='' method='POST'>";
+                    echo "<p style='color: black'>Pytanie: $q </p>" ;
+                    echo "<br> ____________________________________________________________________________";
+                    echo "</div></form>";
+                }
+            }
+        ?>
+        </div>
+    </div>
         <section class="bookmark__film">
           <h2 class="bookmark__header">Film</h2>
-
          </section>
+         <?php
+        $question = new Question();
+        $question_display = $question->getQuestionAssentFilm();
+        ?>
+        <div class="row">
+
+        <div class="col-lg-10">
+          
+
+        <?php
+        //var_dump($question_display);
+            if (empty($question_display)){
+                echo "<p style='color: black'>Nie masz żadnych pytań w tej kategorii</p>";
+            }
+            else{
+                foreach ($question_display as $row) {
+                    $q = substr($row['question'],0,500); 
+                    $id = $row['id'];
+                    echo "<div><form action='' method='POST'>";
+                    echo "<p style='color: black'>Pytanie: $q </p>" ;
+                    echo "<br> ____________________________________________________________________________";
+                    echo "</div></form>";
+                }
+            }
+        ?>
+        </div>
+    </div>
          <section class="bookmark__logika">
            <h2 class="bookmark__header">Logika</h2>
+        </section>
+        <?php
+        $question = new Question();
+        $question_display = $question->getQuestionAssentLogika();
+        ?>
+        <div class="row">
 
-        </section>  
+        <div class="col-lg-10">
+          
+
+        <?php
+        //var_dump($question_display);
+            if (empty($question_display)){
+                echo "<p style='color: black'>Nie masz żadnych pytań w tej kategorii</p>";
+            }
+            else{
+                foreach ($question_display as $row) {
+                    $q = substr($row['question'],0,500); 
+                    $id = $row['id'];
+                    echo "<div><form action='' method='POST'>";
+                    echo "<p style='color: black'>Pytanie: $q </p>" ;
+                    echo "<br> ____________________________________________________________________________";
+                    echo "</div></form>";
+                }
+            }
+        ?>
+        </div>
+    </div>  
         <footer class="footer">
           <a href="#" class="footer__logo-link">
             <img src="images/tytul.svg" alt="Logo" class="footer__logo-image">
