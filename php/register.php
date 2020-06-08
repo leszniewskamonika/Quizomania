@@ -47,9 +47,9 @@ if(isset($_POST['submit'])){
         $user->setHaslo($uhaslo);
         $register = $user->userRegistration();
         if ($register) {    
-            $status = "<div class='alert alert-success' style='text-align:center'>Registration successful <a href='".SITE_URL."login.php'>Click here</a> to login</div>";
+            $status = "<div class='alert alert-success' style='text-align:center: color: white'>Registration successful <a href='".SITE_URL."login.php' style='color: white'>Click here</a> to login</div>";
         } else {    
-            $status = "<div class='alert alert-danger' style='text-align:center'>Registration failed. Email or Username already exits please try again.</div>";
+            $status = "<div class='alert alert-danger' style='color: red'>Registration failed. Email or Username already exits please try again.</div>";
         }
     }
 }
@@ -85,7 +85,7 @@ if(isset($_POST['submit'])){
             foreach ($errors as $value) {
                 echo '<li style="color: red; font-size: 16px;">'.$value.'</li>' ;
             }
-            ?></ul></div>       
+           ?></ul></div>    
     </div>
 </div>
 </section>
