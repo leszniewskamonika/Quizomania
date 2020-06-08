@@ -131,6 +131,19 @@
         </section>
         <section class="bookmark__geografia">
         <h2 class="bookmark__header">Geografia</h2>
+        <?php
+         $user = new User();
+         if (!empty($_SESSION['id'])) {
+             $uid = $_SESSION['id'];
+
+         }
+         if ($user->getSession() === FALSE) {
+            
+        }
+        else {
+            echo  '<p class="bookmark__rozwiazanie"><a href="php/geografia.php"class="main-banner__button">Rozwiaż quiz z tej kategorii</a></p>'; 
+        };     
+        ?>
         </section>
         <?php
         include "php/class/Question.php";
@@ -164,6 +177,19 @@
     </div>
         <section class="bookmark__historias">
           <h2 Class="bookmark__header">Historia</h2>
+          <?php
+         $user = new User();
+         if (!empty($_SESSION['id'])) {
+             $uid = $_SESSION['id'];
+
+         }
+         if ($user->getSession() === FALSE) {
+            
+        }
+        else {
+            echo  '<p class="bookmark__rozwiazanie"><a href="php/historia.php"class="main-banner__button">Rozwiaż quiz z tej kategorii</a></p>'; 
+        };     
+        ?>
         </section>
         <?php
         $question = new Question();
@@ -195,6 +221,19 @@
     </div>
         <section class="bookmark__prl">
           <h2 class="bookmark__header">PRL</h2>
+          <?php
+         $user = new User();
+         if (!empty($_SESSION['id'])) {
+             $uid = $_SESSION['id'];
+
+         }
+         if ($user->getSession() === FALSE) {
+            
+        }
+        else {
+            echo  '<p class="bookmark__rozwiazanie"><a href="php/prl.php"class="main-banner__button">Rozwiaż quiz z tej kategorii</a></p>'; 
+        };     
+        ?>
         </section>
         <?php
         $question = new Question();
@@ -226,6 +265,19 @@
     </div>
         <section class="bookmark__jezyki">
           <h2 class="bookmark__header">Języki</h2>
+          <?php
+         $user = new User();
+         if (!empty($_SESSION['id'])) {
+             $uid = $_SESSION['id'];
+
+         }
+         if ($user->getSession() === FALSE) {
+            
+        }
+        else {
+            echo  '<p class="bookmark__rozwiazanie"><a href="php/jezyki.php"class="main-banner__button">Rozwiaż quiz z tej kategorii</a></p>'; 
+        };     
+        ?>
         </section>
         <?php
         $question = new Question();
@@ -257,6 +309,19 @@
     </div>
         <section class="bookmark__przyroda">
           <h2 class="bookmark__header">Przyroda</h2>
+          <?php
+         $user = new User();
+         if (!empty($_SESSION['id'])) {
+             $uid = $_SESSION['id'];
+
+         }
+         if ($user->getSession() === FALSE) {
+            
+        }
+        else {
+            echo  '<p class="bookmark__rozwiazanie"><a href="php/przyroda.php"class="main-banner__button">Rozwiaż quiz z tej kategorii</a></p>'; 
+        };     
+        ?>
         </section>
         <?php
         $question = new Question();
@@ -288,6 +353,19 @@
     </div>
         <section class="bookmark__ksiazka">
           <h2 class="bookmark__header">Książka</h2>
+          <?php
+         $user = new User();
+         if (!empty($_SESSION['id'])) {
+             $uid = $_SESSION['id'];
+
+         }
+         if ($user->getSession() === FALSE) {
+            
+        }
+        else {
+            echo  '<p class="bookmark__rozwiazanie"><a href="php/ksiazka.php"class="main-banner__button">Rozwiaż quiz z tej kategorii</a></p>'; 
+        };     
+        ?>
         </section>
         <?php
         $question = new Question();
@@ -319,6 +397,19 @@
     </div>
         <section class="bookmark__film">
           <h2 class="bookmark__header">Film</h2>
+          <?php
+         $user = new User();
+         if (!empty($_SESSION['id'])) {
+             $uid = $_SESSION['id'];
+
+         }
+         if ($user->getSession() === FALSE) {
+            
+        }
+        else {
+            echo  '<p class="bookmark__rozwiazanie"><a href="php/film.php"class="main-banner__button">Rozwiaż quiz z tej kategorii</a></p>'; 
+        };     
+        ?>
          </section>
          <?php
         $question = new Question();
@@ -350,6 +441,19 @@
     </div>
          <section class="bookmark__logika">
            <h2 class="bookmark__header">Logika</h2>
+           <?php
+         $user = new User();
+         if (!empty($_SESSION['id'])) {
+             $uid = $_SESSION['id'];
+
+         }
+         if ($user->getSession() === FALSE) {
+            
+        }
+        else {
+            echo  '<p class="bookmark__rozwiazanie"><a href="php/logika.php"class="main-banner__button">Rozwiaż quiz z tej kategorii</a></p>'; 
+        };     
+        ?>
         </section>
         <?php
         $question = new Question();
