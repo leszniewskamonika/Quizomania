@@ -16,7 +16,7 @@ Celem aplikacji jest umożliwenie użytkowniką rozwiązywania quizów oraz twor
    - [Katalog: php](README.md#katalog-php)
    - [Katalog: style](README.md#katalog-style)
    - [Plik: index.php](README.md#plik-indexphp)
-   - [Plik: quiz v2_3.sql](README.md#plik-quiz-v2_3sql)
+   - [Plik: quiz v2_3.sql](README.md#plik-quiz-v2-3sql)
    - [Plik: README.md](README.md#plik-readmemd)
 4. [Struktura bazy danych](README.md#struktura-bazy-danych)
    - [Schemta bazy danych](README.md#schemat-bazy-danych)
@@ -56,7 +56,7 @@ wybranego elementu HTML.
 ### Diagramy przypadków użycia: użytkownik
 ![](dokumentacja/Przypadki%20użycia/Użytkownik.jpg)
 
-### Diagramy przypadków użycia: administartor
+### Diagramy przypadków użycia: administrator
 ![](dokumentacja/Przypadki%20użycia/Admin.jpg)
 
 
