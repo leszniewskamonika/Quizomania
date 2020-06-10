@@ -59,6 +59,18 @@ class Question
         }
     }
 
+    public function getQuestionFromCategory(){
+        $query = "SELECT id FROM qanda WHERE id_category = '".$this->_id_category."' AND assent = '1'";
+        $result = $this->db->query($query) or die($this->db->error);
+        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+            $rowi[] = $row;
+        }
+        if (!empty($rowi))
+
+            return $rowi;
+
+    }
+
     public function getQuestionNoAssent()
     {
         $query = "SELECT * FROM qanda WHERE assent = '0'";
@@ -86,105 +98,15 @@ class Question
         return true;
     }
 
-    public function getQuestionAssentGeografia()
-    {
-        $query = "SELECT * FROM qanda WHERE assent = '1' AND id_category = '1'";
-        $result = $this->db->query($query) or die($this->db->error);
-        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $rows[] = $row;
+    public function random_numbers ($from, $to, $amount) {
+        $range = range($from, $to);
+        $random = array_rand($range, $amount);
+        $result = array();
+        foreach ($random as $index) {
+            $result []= $range[$index];
         }
-        if (!empty($rows))
-
-            return $rows;
-
+        return $result;
     }
-
-    public function getQuestionAssentHistoria()
-    {
-        $query = "SELECT * FROM qanda WHERE assent = '1' AND id_category = '2'";
-        $result = $this->db->query($query) or die($this->db->error);
-        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $rowh[] = $row;
-        }
-        if (!empty($rowh))
-
-            return $rowh;
-    }
-
-    public function getQuestionAssentPrl()
-    {
-        $query = "SELECT * FROM qanda WHERE assent = '1' AND id_category = '3'";
-        $result = $this->db->query($query) or die($this->db->error);
-        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $rowp[] = $row;
-        }
-        if (!empty($rowp))
-
-            return $rowp;
-    }
-
-    public function getQuestionAssentJezyki()
-    {
-        $query = "SELECT * FROM qanda WHERE assent = '1' AND id_category = '4'";
-        $result = $this->db->query($query) or die($this->db->error);
-        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $rowj[] = $row;
-        }
-        if (!empty($rowj))
-
-            return $rowj;
-    }
-
-    public function getQuestionAssentPrzyroda()
-    {
-        $query = "SELECT * FROM qanda WHERE assent = '1' AND id_category = '5'";
-        $result = $this->db->query($query) or die($this->db->error);
-        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $rowpr[] = $row;
-        }
-        if (!empty($rowpr))
-
-            return $rowpr;
-    }
-
-    
-    public function getQuestionAssentKsiazka()
-    {
-        $query = "SELECT * FROM qanda WHERE assent = '1' AND id_category = '6'";
-        $result = $this->db->query($query) or die($this->db->error);
-        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $rowk[] = $row;
-        }
-        if (!empty($rowk))
-
-            return $rowk;
-    }
-
-    public function getQuestionAssentFilm()
-    {
-        $query = "SELECT * FROM qanda WHERE assent = '1' AND id_category = '7'";
-        $result = $this->db->query($query) or die($this->db->error);
-        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $rowf[] = $row;
-        }
-        if (!empty($rowf))
-
-            return $rowf;
-    }
-
-    
-    public function getQuestionAssentLogika()
-    {
-        $query = "SELECT * FROM qanda WHERE assent = '1' AND id_category = '8'";
-        $result = $this->db->query($query) or die($this->db->error);
-        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $rowl[] = $row;
-        }
-        if (!empty($rowl))
-
-            return $rowl;
-    }
-
 
 }
 ?>
