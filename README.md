@@ -1,24 +1,46 @@
+Autorzy aplikacji: Monika Leszniewska, Magdalena Słyk
 # Aplikacja do rozwiązywania quizów "Quizomania"
 Celem aplikacji jest umożliwenie użytkowniką rozwiązywania quizów oraz tworzenie ich dla siebie i innych. 
 
 
 ## Spis treści
-1. [Technologie](Technologie/README.md)
-2. [Sposób użycia](Sposób_użycia/README.md)
-   - Diagramy przypadków użycia: użytkownik
-   - Diagramy przypadków użycia: administrator
-3. [Struktura bazy danych](Struktura_bazy_danych/README.md)
-   - Schemta bazy danych
-   - Tabela: category
-   - Tabela: quanda
-   - Tabela: ranking
-   - Tabela: user
-4. [Struktura klas](Struktura_klas/README.md)
-   - [Klasa: DBConnection.php](DBConnection.php/README.md)
-   - [Klasa: Question.php](Question.php/README.md)
-   - [Klasa: User.php](User.php/README.md)
-  
-  
+1. [Technologie](README.md#technologie)
+2. [Sposób użycia](README.md#sposób-użycia)
+   - [Diagramy przypadków użycia: użytkownik](README.md#diagramy-przypadków-użycia-użytkownik)
+   - [Diagramy przypadków użycia: administrator](README.md#diagramy-przypadków-użycia-administrator)
+3. [Struktura i opis katalogów aplikacji](README.md#struktura-i-opis-katalogów-aplikacji)
+   - [Katalog: css](README.md#katalog-css)
+   - [Katalog: dokumantacja](README.md#katalog-dokumentacja)
+   - [Katalog: images](README.md#katalog-images)
+   - [Katalog: js](README.md#katalog-js)
+   - [Katalog: php](README.md#katalog-php)
+   - [Katalog: style](README.md#katalog-style)
+   - [Plik: index.php](README.md#plik-indexphp)
+   - [Plik: quiz v2_3.sql](README.md#plik-quiz-v2_3sql)
+   - [Plik: README.md](README.md#plik-readmemd)
+4. [Struktura bazy danych](README.md#struktura-bazy-danych)
+   - [Schemta bazy danych](README.md#schemat-bazy-danych)
+   - [Tabela: category](README.md#tabela-category)
+   - [Tabela: quanda](README.md#tabela-quanda)
+   - [Tabela: ranking](README.md#tabela-ranking)
+   - [Tabela: user](README.md#tabela-user)
+5. [Struktura klas](README.md#struktura-klas)
+   - [Klasa: DBConnection.php](README.md#dbconnectionphp)
+   - [Klasa: Question.php](README.md#questionphp)
+   - [Klasa: User.php](README.md#userphp)
+6. [Nawigacja na stronie](README.md#nawigacja-na-stronie)
+   - [Nawigacja podstawowa](README.md#nawigacja-podstawowa)
+   - [Nawigacja użytkownika](README.md#nawigacja-użytkownika)
+   - [Nawigacja administratora](README.md#nawigacja-administratora)
+   - [Nawigacja na urządzeniach mobilnych](README.md#nawigacja-na-urządzeniach-mobilnych)
+   - [Stopka](README.md#stopka)
+7. [System rejestracji](README.md#system-rejestracji)   
+8. [System logowania](README.md#system-logowania)
+9. System dodawania nowych pytań
+10. System akceptacji pytań przez administratora
+11. Podstawowe zależności wyglądu aplikacji
+12. System wykonywania quizów 
+   
 ## Technologie
 Do stworzenia oprogramowania wykorzstałyśmy skryptowy język PHP oraz hipertekstowy język znaczników HTML. Takie połączenie pozwala 
 zaprojektować w pełni funkcjonalną stronę internetową. Składnia HTML pozwala opisać strukturę informacji zawartych wewnatrz strony nadając w
@@ -32,11 +54,32 @@ wybranego elementu HTML.
 
 ## Sposób użycia
 ### Diagramy przypadków użycia: użytkownik
-![](dokumentacja/Przypadki użycia/użytkownik.jpg)
+![](dokumentacja/Przypadki%20użycia/Użytkownik.jpg)
 
 ### Diagramy przypadków użycia: administartor
-![](dokumentacja/Przypadki użycia/admin.jpg)
+![](dokumentacja/Przypadki%20użycia/Admin.jpg)
 
+
+## Struktura i opis katalogów aplikacji
+//tutaj wstawiamy zdjęcie katalogów aplikacji
+### Katalog: css
+Katalog zwiera wszystkie pliki odpowiedzialne za wygląd strony, napisane w języku CSS.
+### Katalog: dokumentacja
+Katalog przechowuje plik pdf, którego zawartość została wykorzystana podczas tworzenia dokumentacji. W podkatalagou *Przypadki użycia* znajduję się zdjęcia diagramów UML przypadków użycia. Pozostałe pliki to screeny katalogów programu oraz diagramów klas UML.
+### Katalog: images
+Przechowuje wszystkie zdjęcia wykorzystywane w aplikacji o rozrzerzeniach jpg. png. oraz svg. 
+### Katalog: js
+W tym katalogu znajduje się plik `main-navigation.js` napisany w języku JavaScrip, który odpowiada za wykonanie akcji po naciśnieciu na mobilny button podczas korzystania z aplikacji na telefonie. Powodując przeniesienie do mobilnej nawigacji w aplikacji. Krótki opis kodu znajduje się w punkcie [Nawigacja na urządzeniach mobilnych](README.md#nawigacja-na-urządzeniach-mobilnych)
+### Katalog: php
+Odpowiada za przechowywanie głównych plików projektu napisanych w języku PHP oraz HTML. W jego podkatalogu o nazwie `class` znajdują się klasy, które zostały utworzone do wykonywania akcji między bazą danych a aplikacją. W podpunkcie [Struktura klas](README.md#struktura-klas) zostały one dokładniej opisane.
+### Katalog: style
+Zawiera pliki odpowiedzialne za opcje nawigacji w zależności od statusu zalogowania na konto ( brak zalogowania `nawigacja.php`, zalogowany jako użytkownik `nawigacja_user.php` oraz zalogowany jako administrator `nawigacja_admin.php`). W podpukcie [Nawigacja na stronie](README.md#nawigacja-na-stronie) zostały dokładniej opisane.
+### Plik: index.php
+Ten plik zawiera kod strony głównej aplikacji i stanowi on najważniejszą cześć projektu, ponieważ od niego rozpoczynają się kolejne zależności w projekcie.
+### Plik: quiz v2-3.sql
+Plik formatu sql. przechowujące dane z bazy danych, którego struktura jest opisana w [Struktura bazy danych](README.md#struktuta-bazy-danych).
+### Plik: README.md
+Ten plik zawiera całą dokumentację aplikacji.Posiada rozrzeszenie md co powoduje,że musi być otwierany za pomocą takiego programu systemu Windows jak Windows Notepad lub poprzez platformę github.com .
 
 ## Struktura bazy danych
 ### Schemat bazy danych
@@ -328,3 +371,304 @@ public function logout() {
         session_destroy();
     }
  ```   
+
+## Nawigacja na stronie
+### Nawigacja podstawowa
+Za nawigację podstawową (użytkownik nie jest zalogowany) odpowiada plik w katalogu style `nawigacja.php`. Znacznik `<img src="../images/tytul.svg" alt="Logo" class="main-navigation__logo-image">` dodaje w nawigacji obraz loga aplikacji,a znacznik `<a href="../index.php" class="main-navigation__logo-link">` odpowiada za przekierowanie do strony głównej, po naciśnięciu loga. 
+W liście nieuporządkowanej `<ul></ul>` znajdują się opcje jakie może użytkownik niezalogowany wykonać na stronie. Te opcje znajdują się odpowiednio w listach uporządkowanych `<li></li>` i odpowiednio do swojego przeznaczenie przekierowują na wyznaczone podstrony.
+W taki sposób na przykład lista `<li class="main-navigation__quizy-item">` z przekierowaniem ` <a  href="../index.php" class="main-navigation__link">` oznaczona tekstem `Home` powoduje przejście do strony gółwnej po jej wykonaniu. Przy użyciu takiej metodyki działania zostały utworzone przekierowania do strony quizów `Quizy`, opisu działalności aplikacji `O nas`, logowania `Logowanie` oraz rejestracji `Rejestracja`. 
+
+```ruby
+  <nav class="main-navigation">
+            <div class="main-navigation__inner">
+            <div class="main-navigation__logo">
+                <a href="../index.php" class="main-navigation__logo-link">
+                    <img src="../images/tytul.svg" alt="Logo" class="main-navigation__logo-image">
+                </a>
+            </div>
+            <ul class="main-navigation__quizy js-main-navigation__quizy">
+                <li class="main-navigation__quizy-item">
+                    <a  href="../index.php" class="main-navigation__link">
+                      Home
+                    </a>
+                  </li>
+                <li class="main-navigation__quizy-item">
+                    <a  href="../index.php#about-us" class="main-navigation__link">
+                      O nas
+                    </a>
+                  </li>
+                <li class="main-navigation__quizy-item">
+                  <a  href="../index.php#quizy" class="main-navigation__link">
+                    Quizy
+                  </a>
+                </li>
+                <li class="main-navigation__quizy-item">
+                    <a  href="../php/login.php" class="main-navigation__link">
+                      Logowanie
+                    </a>
+                  </li>
+                  <li class="main-navigation__quizy-item">
+                    <a  href="../php/register.php" class="main-navigation__link">
+                      Rejestracja
+                    </a>
+                  </li>
+            </ul>
+            <button class="main-navigation__mobile-button js-main-navigation__mobile-button">
+               <img src="../images/navigation.svg" alt="Otwórz / zamknij nawigację" class="main-navigation__mobile-button-image">
+            </button>
+            </div>
+        </nav>
+```
+
+### Nawigacja użytkownika
+Plik odpowiedzialny za nawigację użytkownika (użytkownik zalogowany na konto) odpowiada plik w katalogu klas `nawigacja_user.php`. Podobnie jak w nawigacji podstawowej mamy te same znaczniki odpowiadające za wyświetlanie loga oraz jego przekierowanie do strony głównej. W liście nieuporządkowanej `<ul></ul>` znajdują się trzy takie same co w nawigacji podstawowej odnośniki do podstron. Są to odpowiednio `Home`, `Quizy` oraz `O nas`, a także dodane są nowe `Moje konto`, `Stwórz pytanie` oraz `Wyloguj`. One natomiast są widoczne tylko dla użytkownika zalogowanego na stronie głównej i jej podstronach. A znacznik `<a href="<?php print SITE_URL; ?>user_panel.php?q=logout" class="main-navigation__link">` powoduje wylogowanie użytkownika.
+
+```ruby
+<nav class="main-navigation">
+            <div class="main-navigation__inner">
+            <div class="main-navigation__logo">
+                <a href="../index.php" class="main-navigation__logo-link">
+                    <img src="../images/tytul.svg" alt="Logo" class="main-navigation__logo-image">
+                </a>
+            </div>
+            <ul class="main-navigation__quizy js-main-navigation__quizy">
+                <li class="main-navigation__quizy-item">
+                    <a  href="../index.php" class="main-navigation__link">
+                      Home
+                    </a>
+                  </li>
+                <li class="main-navigation__quizy-item">
+                    <a  href="../index.php#about-us" class="main-navigation__link">
+                      O nas
+                    </a>
+                  </li>
+                <li class="main-navigation__quizy-item">
+                  <a  href="../index.php#quizy" class="main-navigation__link">
+                    Quizy
+                  </a>
+                </li>
+                <li class="main-navigation__quizy-item">
+                    <a  href="../php/login.php" class="main-navigation__link">
+                      Moje konto
+                    </a>
+                  </li>
+
+                <li class="main-navigation__quizy-item">
+                    <a  href="../php/add_question.php" class="main-navigation__link">
+                        Stwórz pytanie
+                    </a>
+                </li>
+              
+                  <li class="main-navigation__quizy-item">
+                  <a href="<?php print SITE_URL; ?>user_panel.php?q=logout" class="main-navigation__link">
+                      Wyloguj
+                    </a>
+                  </li>                 
+            </ul>
+            <button class="main-navigation__mobile-button js-main-navigation__mobile-button">
+               <img src="../images/navigation.svg" alt="Otwórz / zamknij nawigację" class="main-navigation__mobile-button-image">
+            </button>
+            </div>
+        </nav>
+```
+
+### Nawigacja administratora
+Nawigacja administratora wygląda oraz działa niemal identycznie tak samo jak nawigacja użytkownika. Dodana jest jednak jedna dodatkowa opcja umożliwiająca administratorowi akceptację stworzonych pytań. Znajduje się to w znacznikach PHP, gdzie tworzony jest nowy obiekt user `$user = new User();` a jego rola musi wynosić 1 `$_SESSION['rola']==="1"` ( tak jest określony administrator w bazie danych ). Wtedy użytkownik, który jest administratorem ma możliwość przejścia do sekcji akceptacji pytań. Jeśli natomiast rola użytkownika jest inna niż 1 przejście do tej sekcji nie zostaje wyświetlane. 
+
+```ruby
+<nav class="main-navigation">
+            <div class="main-navigation__inner">
+            <div class="main-navigation__logo">
+                <a href="../index.php" class="main-navigation__logo-link">
+                    <img src="../images/tytul.svg" alt="Logo" class="main-navigation__logo-image">
+                </a>
+            </div>
+            <ul class="main-navigation__quizy js-main-navigation__quizy">
+                <li class="main-navigation__quizy-item">
+                    <a  href="../index.php" class="main-navigation__link">
+                      Home
+                    </a>
+                  </li>
+                <li class="main-navigation__quizy-item">
+                    <a  href="../index.php#about-us" class="main-navigation__link">
+                      O nas
+                    </a>
+                  </li>
+                <li class="main-navigation__quizy-item">
+                  <a  href="../index.php#quizy" class="main-navigation__link">
+                    Quizy
+                  </a>
+                </li>
+                <li class="main-navigation__quizy-item">
+                    <a  href="../php/login.php" class="main-navigation__link">
+                      Moje konto
+                    </a>
+                  </li>
+                <li class="main-navigation__quizy-item">
+                    <a  href="../php/add_question.php" class="main-navigation__link">
+                        Stwórz pytanie
+                    </a>
+                </li>
+               <?php
+             
+
+               $user = new User();
+                if (!empty($_SESSION['id'])) {
+                    $uid = $_SESSION['id'];
+
+                }
+                if($_SESSION['rola']==="1"){
+                  echo "<li class=\"main-navigation__quizy-item\">
+                <a href=\"assent.php\" class=\"main-navigation__link\">
+                    Akceptacja pytań
+                  </a>
+                </li> ";
+              }
+              else {
+                
+              };
+                
+                  ?>
+                  
+                  <li class="main-navigation__quizy-item">
+                  <a href="<?php print SITE_URL; ?>admin_panel.php?q=logout" class="main-navigation__link">
+                      Wyloguj
+                    </a>
+                  </li>                 
+            </ul>
+            <button class="main-navigation__mobile-button js-main-navigation__mobile-button">
+               <img src="../images/navigation.svg" alt="Otwórz / zamknij nawigację" class="main-navigation__mobile-button-image">
+            </button>
+            </div>
+        </nav>
+ ```
+ 
+### Nawigacja na urządzeniach mobilnych
+Nawigacja na urządzeniach mobilnych różni się od tej wyświetlanej na komputerze, jednak wykorzystuje ona te same pliki nawigacyjne. 
+W każdym z trzech wcześniejszych plików znajduje się znacznik `<ul class="main-navigation__quizy js-main-navigation__quizy">`, którego część klasy `js-main-navigation__quizy` odpowiada za wyświetlanie nawigacji na telefonie. Natomiast znacznik przycisku `<button class="main-navigation__mobile-button js-main-navigation__mobile-button">` przekazuje informacje o pojawieniu się odpowiedniego przycisku nawigującego,który pojawia się w sytuacji korzystania z aplikacji na telefonie. W sytuacji,kiedy wszytskie opcje nawigujące nie są w stanie wyświetlić się na ekranie. 
+Do prawidłowego działania przycisku został użyty język JavaScrip, ponieważ jego biblioteki umożliwiają wykonania reakcji po naciśnięciu na obrazek.Działanie opiera się na pliku `main-navigation.js` zawartym w katalogu js.
+
+```ruby
+(()=> {
+const button = document.querySelector(" .js-main-navigation__mobile-button");
+const quizy = document.querySelector(" .js-main-navigation__quizy");
+
+const toggleClass = () =>{
+    quizy.classList.toggle("main-navigation__quizy--open");
+};
+
+button.addEventListener("click", toggleClass);
+quizy.addEventListener("click", toggleClass);
+})();
+```
+
+### Stopka
+Stopka zanjduje się na każdej podstronie aplikacji.Jej działania polega na przekierowaniu do samej góry podstrony, po naciśnięciu zawartego w niej loga aplikacji.
+Kod stopki znajduje się następujących plikach: `indxe.php`, `login.php`,`register.php`,`user_panel.php`, `assent.php`, `admin_panel.php` i `add_question.php`.
+
+```ruby
+<footer class="footer">
+          <a href="#" class="footer__logo-link">
+            <img src="images/tytul.svg" alt="Logo" class="footer__logo-image">
+        </a>
+        </footer>
+ ```  
+ 
+ ## System rejestracji
+ Głównym plikiem odpowidzialnym za rejestrację jest plik `register.php` umieszczony w katalogu php.
+ 
+ Tworzony jest nowy obiekt klasy `User()`, któremu przypisujemy odpowiednio: adres email (`$uemial`), login (`$ulogin`) oraz hasło (`$uhaslo`). Następnie te dane są wstawiane do bazy danych poprzez polecenia: `$user->setEmail($uemail);`, `$user->setLogin($ulogin);`, ` $user->setHaslo($uhaslo);` i `$register = $user->userRegistration();`. Jeśli rejestracja przebiegła pomyślnie zostaje wyświetlony komunikat o prawidłowej rejestracji oraz infromacja o przejściu do panelu logowania ` Registration successful` i  `Click here</a> to login`. 
+ 
+ System rejestracji sprawdza również poprawność wpisywanych danych oraz czy w bazie danych nie ma użytkownika o takich samych danych.
+ W pierwszej kolejności jest sprawdzane czy każde pole rejestracyjne zostało wypełnione i wyświetla odpowiedni komunikat o napotkanym    błędzie. Odpowiadają za to instrukcje warunkowe if spradzające po kolei wprowadzony email, logi oraz hasło. Pętle te sprawdzają odpowiednio następujące warunki: `if(!filter_var($uemail, FILTER_VALIDATE_EMAIL))` (instrukcja sprawdza czy został wprowadzony email), `if(strlen(trim($ulogin)) === 0)` (instrukcja sprawdza czy rubryka login nie jest pusta) oraz `if(strlen(trim($uhaslo)) === 0)` (instrukcja sprawdza czy hasło zostało podane).
+ Natomiast jeśli w bazie danych znajduje się już użytkownik o podanym adresie email lub loginie, zostanie wyświetlony o tym następujący komunikat `Registration failed. Email or Username already exits please try again.`.
+ 
+ ```ruby
+ $user = new User();
+ 
+if ($user->getSession()===TRUE) {
+    header("location:../index.php");
+}
+if(@$_SESSION['login']){
+    if($_SESSION['rola']==="1"){
+        header("location:admin_panel.php");
+    }
+    else{
+        header("location:user_panel.php");
+    }
+}
+$status = '';
+ 
+$errors = array(); 
+//If our form has been submitted.
+if(isset($_POST['submit'])){
+    extract($_POST);
+    //Get the values of our form fields.
+    $uemail = isset($uemail) ? $uemail : null;
+    $ulogin = isset($ulogin) ? $ulogin : null;
+    $uhaslo = isset($uhaslo) ? $uhaslo : null;
+
+
+    if(!filter_var($uemail, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "That is not a valid email address!";
+    }
+
+    if(strlen(trim($ulogin)) === 0){
+        $errors[] = "You must enter your login";
+    }
+    if(strlen(trim($uhaslo)) === 0){
+        $errors[] = "You must enter your password!";
+    }
+ 
+    //If our $errors array is empty, we can assume that everything went fine.
+    if(empty($errors)){
+        //insert data into database.
+        $user->setEmail($uemail);
+        $user->setLogin($ulogin);
+        $user->setHaslo($uhaslo);
+        $register = $user->userRegistration();
+        if ($register) {    
+            $status = "<div class='alert alert-success' style='text-align:center: color: white'>Registration successful <a href='".SITE_URL."login.php' style='color: white'>Click here</a> to login</div>";
+        } else {    
+            $status = "<div class='alert alert-danger' style='color: red'>Registration failed. Email or Username already exits please try again.</div>";
+        }
+    }
+}
+```
+
+## System logowania
+Głównym plikiem odpowiedzialnym za logowanie jest `login.php` w katalogu php.
+
+Tak jak w przypadku rejestracji tworzony jest nowy obiekt kalsy `User()`. Następnie po pobraniu danych od użytkownika pobierane są dane z bazy danych do porównania z tymi wprowadzonymi. Jeśli dane zostały podane poprawnie, sprawdzana jest `rola` użytkownika aby przekirować go odpowiednio albo do panelu użytkownika albo do panelu administratora. Sprawdza to instraukcja warunkowa **if else** (`if($_SESSION['rola']==="1")`). 
+
+Natomiast jeśli dane zostały wprowadzone niepoprawnie wyświetla się komunikat `Wrong username or password`.
+
+```ruby
+$msg = '';
+$user = new User();
+if(@$_SESSION['login']){
+  if($_SESSION['rola']==="1"){
+    header("location:admin_panel.php");
+  } 
+  else{
+    header("location:user_panel.php");
+  }
+}
+if (isset($_POST['submit'])) {
+    $user->setLogin($_POST['emailusername']);
+    $user->setHaslo($_POST['password']);
+    $login = $user->doLogin();
+    if ($login) {     
+      if($_SESSION['rola']==="1"){
+        header("location:admin_panel.php");
+      } 
+      else{
+        header("location:user_panel.php");
+      }     
+
+    } else {            
+        $msg = 'Wrong username or password';
+    }
+}
+```
+
