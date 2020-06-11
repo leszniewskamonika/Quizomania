@@ -2,6 +2,7 @@
 include "class/User.php";
 include "class/DBConnection.php";
 include "class/Question.php";
+include "class/Ranking.php";
 
 $id_category=1;
 $question = new Question();
@@ -34,11 +35,10 @@ for($i=0; $i<10;$i++){
     $id_question_to_quiz[$i]=$question_display[$a];
 }
 
-
+echo "<form action='' method='POST'>";
 //var_dump($id_question_to_quiz);
-$correct_answer=array(10);
-$qca=0;
-foreach ($id_question_to_quiz as $row){
+$questions_ids = [];
+foreach ( $id_question_to_quiz as $n => $row){
     $question->setID($row['id']);
     $quiz_question = $question ->getQuestionInfo();
 
@@ -48,21 +48,44 @@ foreach ($id_question_to_quiz as $row){
     $c = substr($quiz_question['answer_c'],0,500);
     $ca = substr($quiz_question['correct_answer'],0,500);
     $id = $quiz_question['id'];
-    echo "<div><form action='' method='POST'>";
+    echo "<div>";
     echo "<p>Pytanie: $q </p>" ;
-    echo "<input type='radio' name='$id' id='A'>A: $a</input><br>";
-    echo "<input type='radio' name='$id' id='B'>B: $b</input><br>";
-    echo "<input type='radio' name='$id' id='C'>C: $c</input></select>";
+    echo "<input type='radio' name='$id' value='$a' required>A: $a</input><br>";
+    echo "<input type='radio' name='$id' value='$b'>B: $b</input><br>";
+    echo "<input type='radio' name='$id' value='$c'>C: $c</input>";
     echo "<p>Poprawna odpowiedź: $ca</p>";
-    $correct_answer[$qca] = $ca;
-    $qca++;
-    echo "<br> ____________________________________________________________________________";
+
+    array_push($questions_ids, $id);
+    echo "<br><hr></div>";
 
 }
+
+$serialized_question_ids = serialize($questions_ids);
+
+echo "<input type='hidden' name='questions_ids' value='$serialized_question_ids' hidden></input>";
 echo "<br> <button type=\"submit\" name=\"submit\" >Wyślij test</button></div></form>";
 
 
 if(isset($_POST['submit'])){
-    extract($_POST);
-    var_dump($correct_answer);
+    $answers_ids = unserialize($_POST["questions_ids"]);
+    $pkt=0;
+    foreach ( $answers_ids as $single_answer_id ) {
+        //echo $_POST[$single_answer_id];
+        $question -> setID($single_answer_id );
+        $correct_answer = $question ->getQuestionInfo();
+
+        if (strcmp($correct_answer['correct_answer'],$_POST[$single_answer_id]) === 0) {
+            $pkt++;
+        }
+    }
+
+    $UserInRanking = new Ranking();
+    if ($UserInRanking->searchUserInRanking($uid) == false ){
+        $UserInRanking->addUserToRanking($uid);
+        $UserInRanking->addScore($uid,$pkt);
+    }
+    else{
+        $UserInRanking->addScore($uid,$pkt);
+    }
+    echo "<script> alert(\"Zdobyłeś {$pkt}/10 punktów.\") </script>";
 }
