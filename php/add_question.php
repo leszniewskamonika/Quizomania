@@ -47,13 +47,15 @@ if(isset($_POST['submit'])){
 
     //If our $errors array is empty, we can assume that everything went fine.
     if(empty($errors)){
+        $db = new DBConnection();
+        $db = $db->returnConnection();
         //insert data into database.
-        $question->setId_category($uid_category);
-        $question->setQuestion($uquestion);
-        $question->setAnswerA($uanswerA);
-        $question->setAnswerB($uanswerB);
-        $question->setAnswerC($uanswerC);
-        $question->setCorrect_answer($ucorrect_answer);
+        $question->setId_category(mysqli_real_escape_string($db, $uid_category));
+        $question->setQuestion(mysqli_real_escape_string($db, $uquestion));
+        $question->setAnswerA(mysqli_real_escape_string($db, $uanswerA));
+        $question->setAnswerB(mysqli_real_escape_string($db, $uanswerB));
+        $question->setAnswerC(mysqli_real_escape_string($db, $uanswerC));
+        $question->setCorrect_answer(mysqli_real_escape_string($db, $ucorrect_answer));
         $addQuestion = $question->addQuestion();
         if ($addQuestion) {
             $status = "<div class='alert alert-success' style='text-align:center'>Pytanie pomyślnie dodano, teraz administrator musi je zaakceptować<a href='../index.php'>Kliknij tutaj</a> żeby przejść do strony głównej</div>";
