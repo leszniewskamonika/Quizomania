@@ -87,6 +87,17 @@ class Question
     // Add Question Method
     public function addQuestion()
     {
+        switch ($this->_correct_answer) {
+            case "A":
+                $this->_correct_answer = $this->_answerA;
+                break;
+            case "B":
+                $this->_correct_answer = $this->_answerB;
+                break;
+            case "C":
+                $this->_correct_answer = $this->_answerC;
+                break;
+        }
         $query = 'INSERT INTO qanda SET 
             id_category="' . $this->_id_category . '",
             question="' . $this->_question . '",
