@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
         <?php if(!empty($msg)){ 
                 echo '<div class="alert alert-danger" style="color: red">Wrong username or password</div>';
        } ?>    
-    </div></from>
+    </div></form>
 <div class="row">
        
     </div>
