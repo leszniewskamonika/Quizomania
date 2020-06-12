@@ -30,7 +30,21 @@ input[type=email]{
 }
 
 button[type=submit]{
-    margin: 10px 0px;
+    margin: 20px 0px;
     width:100%;
+    
 }
 
+input[type=radio]{
+    font-size: 100vh;
+    color: black;
+    text-align: center;
+    position: relative;
+    line-height: 20px;
+}
+
+
+    label{
+    font-size: 200%;
+    position: center;
+}
