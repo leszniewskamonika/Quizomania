@@ -74,7 +74,11 @@
               };
                 
                   ?>
-                  
+                  <li class="main-navigation__quizy-item">
+                  <a href="../php/ranking.php" class="main-navigation__link">
+                  Ranking
+                  </a>
+                  </li>
                   <li class="main-navigation__quizy-item">
                   <a href="<?php print SITE_URL; ?>admin_panel.php?q=logout" class="main-navigation__link">
                       Wyloguj

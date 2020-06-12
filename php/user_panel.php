@@ -1,7 +1,7 @@
 <?php
 include "class/User.php";
 include "class/DBConnection.php";
-include "../style/nawigacja_user.php";
+include "../style/nawigacja_admin.php";
 
 
 $user = new User();
