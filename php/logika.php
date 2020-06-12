@@ -69,6 +69,8 @@ $serialized_question_ids = serialize($questions_ids);
 
 echo "<input type='hidden' name='questions_ids' value='$serialized_question_ids' hidden></input>";
 echo "<br> <button type=\"submit\" name=\"submit\" style='font-size: 120%'>Wyślij test</button></div></form>";
+echo "<div class='diver'><a href='../index.php'>Powrót do strony głównej</a></div><br>";
+echo "<div class='diver2'><a href='../php/ranking.php'>Zobacz ranking</a></div><br>";
 
 
 if(isset($_POST['submit'])){
