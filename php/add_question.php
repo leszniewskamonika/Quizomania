@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
 
             <form action="" method="post" name="add" enctype="multipart/form-data">
                 <div>
-                    <label for="id_category"><h3 style="color: white">Kategoria pytania</label>
+                    <label for="id_category"><h3 style="color: white"><br><br>Kategoria pytania</label>
                     <select name="uid_category">
                         <option value="1">GEOGRAFIA</option>
                         <option value="2">HISTORIA</option>
@@ -127,12 +127,11 @@ if(isset($_POST['submit'])){
                 <br>
                 <div class="form-group">
                     <button type="submit" name="submit" >Dodaj pytanie</button>
-                </div><br>
+                </div><br><br><br>
             </form>
         </div>
-    </div>
-</div>
- </section>
+    </div>          
+</section>
  <footer class="footer">
     <a href="#" class="footer__logo-link">
         <img src="../images/tytul.svg" alt="Logo" class="footer__logo-image">

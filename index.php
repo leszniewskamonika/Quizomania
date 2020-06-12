@@ -84,11 +84,21 @@
                                   Moje konto
                                 </a>
                               </li> ";
+                              echo "<li class=\"main-navigation__quizy-item\">
+                              <a href=\"php/ranking.php\" class=\"main-navigation__link\">
+                                  Ranking
+                                </a>
+                              </li> ";
                             }
                             else {
                                 echo "<li class=\"main-navigation__quizy-item\" >
                               <a href=\"php/user_panel.php\" class=\"main-navigation__link\">
                                   Moje konto
+                                </a>
+                              </li> ";
+                              echo "<li class=\"main-navigation__quizy-item\">
+                              <a href=\"php/ranking.php\" class=\"main-navigation__link\">
+                                  Ranking
                                 </a>
                               </li> ";
                             };
