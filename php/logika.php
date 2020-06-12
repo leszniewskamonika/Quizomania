@@ -1,3 +1,8 @@
+<html>
+<head>
+<link href="../css/input-group mb-3.css" rel="stylesheet">
+</head>
+
 <?php
 include "class/User.php";
 include "class/DBConnection.php";
@@ -49,10 +54,10 @@ foreach ( $id_question_to_quiz as $n => $row){
     $ca = substr($quiz_question['correct_answer'],0,500);
     $id = $quiz_question['id'];
     echo "<div>";
-    echo "<p>Pytanie: $q </p>" ;
-    echo "<input type='radio' name='$id' value='$a' required>A: $a</input><br>";
-    echo "<input type='radio' name='$id' value='$b'>B: $b</input><br>";
-    echo "<input type='radio' name='$id' value='$c'>C: $c</input>";
+    echo "<label>Pytanie: $q </label><br><br>" ;
+    echo "<input type='radio' name='$id' value='$a' required><label>A: $a</label><br></input><br>";
+    echo "<input type='radio' name='$id' value='$b'><label>B: $b</label><br></input><br>";
+    echo "<input type='radio' name='$id' value='$c'><label>C: $c</label><br></input><br>";
     //echo "<p>Poprawna odpowiedź: $ca</p>";
 
     array_push($questions_ids, $id);
@@ -63,7 +68,7 @@ foreach ( $id_question_to_quiz as $n => $row){
 $serialized_question_ids = serialize($questions_ids);
 
 echo "<input type='hidden' name='questions_ids' value='$serialized_question_ids' hidden></input>";
-echo "<br> <button type=\"submit\" name=\"submit\" >Wyślij test</button></div></form>";
+echo "<br> <button type=\"submit\" name=\"submit\" style='font-size: 120%'>Wyślij test</button></div></form>";
 
 
 if(isset($_POST['submit'])){
