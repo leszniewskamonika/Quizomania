@@ -61,7 +61,7 @@ wybranego elementu HTML.
 
 
 ## Struktura i opis katalogów aplikacji
-//tutaj wstawiamy zdjęcie katalogów aplikacji
+![](dokumentacja/schemat.JPG)
 ### Katalog: css
 Katalog zwiera wszystkie pliki odpowiedzialne za wygląd strony, napisane w języku CSS.
 ### Katalog: dokumentacja
