@@ -53,7 +53,7 @@ foreach ( $id_question_to_quiz as $n => $row){
     echo "<input type='radio' name='$id' value='$a' required>A: $a</input><br>";
     echo "<input type='radio' name='$id' value='$b'>B: $b</input><br>";
     echo "<input type='radio' name='$id' value='$c'>C: $c</input>";
-    echo "<p>Poprawna odpowiedź: $ca</p>";
+    //echo "<p>Poprawna odpowiedź: $ca</p>";
 
     array_push($questions_ids, $id);
     echo "<br><hr></div>";
