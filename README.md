@@ -171,7 +171,8 @@ Ten plik zawiera całą dokumentację aplikacji.Posiada rozrzeszenie md co powod
 
 ## Struktura bazy danych
 ### Schemat bazy danych
- ![](dokumenatcja/schemat.JPG)
+
+ ![](dokumentacja/schemat.JPG)
  
 ### Tabela: category
 Tabela przechowuje informacje o kategoriach.
@@ -192,7 +193,7 @@ Tabela przechowuje informacje na temat pytań do quizów.
 | **answer_a** | text | Odpowiedź a. |
 | **answer_b** | text | Odpowiedź b. |
 | **answer_c** | text | Odpowiedź c. |
-| **correct_answer** | enum | Zwiera odpowiedź, kolumna może przyjąć wartość: 'A','B' lub 'C'. |
+| **correct_answer** | text | Zwiera odpowiedź, kolumna może przyjąć wartość taką jak w kolumnach z odpowiedziami. Wszystko zależy od tego jaka jest poprawna odpowiedź |
 | **assent** | enum | Informacja na temat akceptacji pytań przez administratora: '0' - pytanie niezaakceptowane, '1' - pytanie zaakceptowane. Wartością domyślną jest '0'. |
 
 ### Tabela: ranking
@@ -280,26 +281,56 @@ class Question
     }
 ```
 
-Za możliwość dodawannia nowych pytań odpowiada metoda `addQuestion()`, która dodaje odpowiednio: id pytania, odpowiedź A, odpowiedź B, odpowiedź C oraz poprawną odpowiedź.
+Za możliwość dodawannia nowych pytań odpowiada metoda `addQuestion()`, która dodaje odpowiednio: id pytania, odpowiedź A, odpowiedź B, odpowiedź C oraz poprawną odpowiedź do tabeli *qanda*. Metoda najpierw sprawdza 
+jaką odpowiedź zaznaczyliśmy jako 'poprawna'. Wtedy oprócz wstawiania tej odpowiedzi do odpowiedniej kolumny, kopiuje ją
+i umieszcza w kolumnie *correct_answer*.
 
 ```ruby
  public function addQuestion()
-    {
-        $query = 'INSERT INTO qanda SET 
-            id_category="' . $this->_id_category . '",
-            question="' . $this->_question . '",
-            answer_a="' . $this->_answerA . '",
-            answer_b="' . $this->_answerB . '",
-            answer_c="' . $this->_answerC . '",   
-            correct_answer="' . $this->_correct_answer . '"';
-        $result = $this->db->query($query) or die($this->db->error);
-        return true;
-    }
+     {
+         switch ($this->_correct_answer) {
+             case "A":
+                 $this->_correct_answer = $this->_answerA;
+                 break;
+             case "B":
+                 $this->_correct_answer = $this->_answerB;
+                 break;
+             case "C":
+                 $this->_correct_answer = $this->_answerC;
+                 break;
+         }
+         $query = 'INSERT INTO qanda SET 
+             id_category="' . $this->_id_category . '",
+             question="' . $this->_question . '",
+             answer_a="' . $this->_answerA . '",
+             answer_b="' . $this->_answerB . '",
+             answer_c="' . $this->_answerC . '",   
+             correct_answer="' . $this->_correct_answer . '"';
+         $result = $this->db->query($query) or die($this->db->error);
+         return true;
+     }
 ```
+Do wyświetlania niezaakceptowanych pytań w panelu administratora odpowiada metoda `getQuestionNoAssent()`. Metoda ma za zadanie
+wyciągać z tabeli *qanda* pytania, które w kolumnie *assent* mają wartość '0' (czyli są nie zaakceptowane).
 
-Pododaniu pytań przez administratora lub użytkownika muszą być one zaakceptowane przez administratora. Należy tego dokonać, ponieważ domyślnie
+```ruby
+    public function getQuestionNoAssent()
+    {
+        $query = "SELECT * FROM qanda WHERE assent = '0'";
+        $result = $this->db->query($query) or die($this->db->error);
+        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+            $rowi[] = $row;
+        }
+        if (!empty($rowi))
+
+            return $rowi;
+
+    }
+```  
+
+Po dodaniu pytań przez użytkownika muszą być one zaakceptowane przez administratora. Należy tego dokonać, ponieważ domyślnie
 po utworzeniu pytania jego wartością domyślną w tabeli *quanda* jest '0'. Natomiast wykorzystanie tych pytań występuje tylko wtedy, gdy wartość domyślna w 
-tabelii *quanda* jest równa '1'. Związku z tym za zmianę akceptacji pytań odpowiada metoda `updateStatusWhenQuestionAssent()`.
+tabelii *quanda* w kolumnie *assent* jest równa '1'. W związku z tym za zmianę akceptacji pytań odpowiada metoda `updateStatusWhenQuestionAssent()`.
 
 ```ruby
  public function updateStatusWhenQuestionAssent(){
@@ -310,24 +341,38 @@ tabelii *quanda* jest równa '1'. Związku z tym za zmianę akceptacji pytań od
 ```    
 
 
-Do wyświetlania pytań z odpowiednich kategorii służą metody `getQuestionAssent...`. Każda z nich ma określoną własną `id_category`, aby były odpowiednio identyfikowane ze swoimi kategoriami
-i w odpowieniej kategorii były wyświetlane tylko pytania należące do jej dziedziny.
-Poniżej znajduje się przykładowa metoda dla kategorii geogragia.
+Do wyświetlania pytań z odpowiednich kategorii służy  metoda `getQuestionFromCategory()`. Metoda ta wykorzystuje wcześniej 
+podany numer id kategorii i wyszukuje tylko te pytania, które są zatwierdzone i mają w kolumnie *id_category* tenże właśnie numer.
+
 ```ruby
- public function getQuestionAssentGeografia()
-    {
-        $query = "SELECT * FROM qanda WHERE assent = '1' AND id_category = '1'";
+public function getQuestionFromCategory(){
+        $query = "SELECT id FROM qanda WHERE id_category = '".$this->_id_category."' AND assent = '1'";
         $result = $this->db->query($query) or die($this->db->error);
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            $rows[] = $row;
+            $rowi[] = $row;
         }
-        if (!empty($rows))
+        if (!empty($rowi))
 
-            return $rows;
+            return $rowi;
 
     }
 ```
 
+Wkradła nam się jeszcze jedna metoda `random_numbers ($from, $to, $amount)`, którą wykorzystujemy do losowania randomowych liczb z zakresu, który potrzebujemy.
+Wykorzystujemy ją przy losowaniu pytań do quizów.
+
+```ruby
+    public function random_numbers ($from, $to, $amount) {
+        $range = range($from, $to);
+        $random = array_rand($range, $amount);
+        $result = array();
+        foreach ($random as $index) {
+            $result []= $range[$index];
+        }
+        return $result;
+    }
+
+```
 
 ### User.php
 Zadaniem klasy jest odpowiadanie za łączność z tabelą *user* oraz wykonywanie zagadnień związanych z użytkownikiem (rejestracja, logowanie oraz rola użytkownika).
@@ -461,7 +506,75 @@ public function logout() {
  ``` 
  
 ### Ranking.php
-Zadaniem klasy jest odpowiedanie za ranking punktacji quizów.
+Zadaniem klasy jest odpowiadanie za ranking punktacji quizów.
+
+Funkcja `addScore($id,$score)` wykorzystując numer id użytkownika ($id) oraz liczbę punktów, które uzyskał
+w quizie ($score) dodaje zdobyte punkty do wiersza w kolumnie *points* oraz dodaje '10' do wiersza w kolumnie 
+*max_points* abyśmy wiedzieli na ile pytań użytkowanik już odpowiedział.
+
+```ruby
+    public function addScore($id,$score){
+        $query = "UPDATE ranking SET points = points +{$score} , max_points = max_points+10 WHERE id_user={$id}";
+        $result = $this->db->query($query) or die($this->db->error);
+
+    }
+```
+
+Metoda `searchUserInRanking ($id)` wyszukuje czy w tabeli *ranking* jest użytkownik o podanym przez nas numerze id ($id).
+Jeżeli nie ma go w tabeli zwraca nam 'false'. Jeżeli jednak jest, zwraca 'true'.
+
+```ruby
+    public function searchUserInRanking ($id){
+        $query = "SELECT * FROM ranking WHERE id_user = {$id}";
+        $result = $this->db->query($query) or die($this->db->error);
+        $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        if (!empty($data)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+```
+
+Metodą `addUserToRanking($id)` dodamy użytkownika o podanym numerze id do tabeli *ranking*.
+
+```ruby
+    public function addUserToRanking($id){
+        $query = "INSERT INTO ranking SET id_user={$id}";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+```
+
+Metoda `convertToProcent($id)` przelicza ilość odpwoedzi poprawnych w stosunku do  wszystkich opdpowiedzi na 
+wynik procentowy. Co daje nam możliwość zobaczenia jak skuteczny w odpowiedziach był nasz użytkownik.
+
+```ruby
+    public function convertToProcent($id){
+        $query = "SELECT * FROM ranking WHERE id_user={$id}";
+        $result = $this->db->query($query) or die($this->db->error);
+        $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $data = $data[0]; // wyciagnij pierwszy wiersz
+        $a = intval($data["points"], 10);
+        $b = intval($data["max_points"], 10);
+        if($b == 0){
+            return "Database error";
+        }
+        $procent = ($a/$b)*100;
+        return "{$procent}%";
+    }
+```
+
+Metoda `rankingInfo()` zwraca nam już posortowane malejąco wyniki użytkowników.
+
+```ruby
+    public function rankingInfo(){
+        $query = "SELECT * FROM ranking ORDER BY max_points DESC, points DESC";
+        $result = $this->db->query($query) or die($this->db->error);
+        $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $data;
+    }
+```
 
 ## Nawigacja na stronie
 ### Nawigacja podstawowa
@@ -985,6 +1098,109 @@ public function updateStatusWhenQuestionAssent(){
     }
 ```
 ## System wykonywania quizów
+Plikami odpowiedzialnymi za wykonywanie quizów jest plik nazwany odpowiednio każdą kategorią np. `geografia.php` oraz Klasa `Question`.
+
+Najpierw pobieramy za pomocą metody `getQuestionFromCategory()` zatwierdzone pytania z danej kategorii.
+
+```ruby
+$id_category=1;
+$question = new Question();
+$question->setId_category($id_category);
+$question_display = $question->getQuestionFromCategory();
+```
+
+Następnie losujemy randomowe numer id pytań, na które będzie odpowiadał użytkowanik.
+
+Zaczynamy od poznania ile pytań mamy do dyspozycji:
+
+ 
+```ruby
+//ilość elementów w tablicy = ilości pytań z danej kategorii
+$length_array = count($question_display);
+//var_dump($length_array);
+```
+
+Następnie z przedziału od '0' do liczby ocznaczającej długość tablicy z pytaniami (pomniejszona o 1).
+```ruby
+//losowanie 10 randomowych liczb
+$random = $question ->random_numbers(0,$length_array-1,10);
+//var_dump($random);
+```
+Na końcu wyciągamy numery id z tablicy, numerami elemetów są nasze losowe liczby z poprzedniego kroku.
+```ruby
+//wyciąganie "losowych" numerów id pyatń do quizu
+$id_question_to_quiz = array(10);
+for($i=0; $i<10;$i++){
+    $a=$random[$i];
+    $id_question_to_quiz[$i]=$question_display[$a];
+}
+```
+
+Wyświetlamy pytania z numerami id, które pobraliśmy  z tablicy `$id_question_to_quiz`.
+Następnie przechowujemy numer id pytania i odpowiedź użytkownaika na nie.
+
+```ruby
+echo "<form action='' method='POST'>";
+//var_dump($id_question_to_quiz);
+$questions_ids = [];
+foreach ( $id_question_to_quiz as $n => $row){
+    $question->setID($row['id']);
+    $quiz_question = $question ->getQuestionInfo();
+
+    $q = substr($quiz_question['question'],0,500);
+    $a = substr($quiz_question['answer_a'],0,500);
+    $b = substr($quiz_question['answer_b'],0,500);
+    $c = substr($quiz_question['answer_c'],0,500);
+    $ca = substr($quiz_question['correct_answer'],0,500);
+    $id = $quiz_question['id'];
+    echo "<div>";
+    echo "<label>Pytanie: $q </label><br><br>" ;
+    echo "<input type='radio' name='$id' value='$a' required><label>A: $a</label><br></input><br>";
+    echo "<input type='radio' name='$id' value='$b'><label>B: $b</label><br></input><br>";
+    echo "<input type='radio' name='$id' value='$c'><label>C: $c</label><br></input><br>";
+    //echo "<p>Poprawna odpowiedź: $ca</p>";
+
+    array_push($questions_ids, $id);
+    echo "<br><hr></div>";
+
+}
+```
+
+Jeżeli użytkownik kliknie przycisk wysyłający pytanie za pomocą wcześniej wyciągniętych jego odpowiedzi i numerów
+id pytań porównujemy odpowiedzi użytkownika do poprawnych odpowiedzi zamieszczonych 
+w tabeli *qanda* w kolumnie *correct_answer*. Jeżeli są takie same 
+do zmiennej przetrzymującej wynik (`$pkt`) dodajemy '1'.
+
+Gdy skończymy sprawdzać wszystkie pytania sprawdzamy czy nasz użytkownik jest w tabeli *ranking*.
+Jeżeli jest to wykorzystujemy metode `addScore()` aby dodać ilość poprawnych odpowiedzi do jego punktacji.
+Jeżeli jednak naszego użytkownika nie ma w tabeli *ranking* korzystamy z metody dodającej użytkownika do rankingu (`addUserToRanking()`).
+Następnie tak jak w przypadku poprzednim dodajemy mu punkty za pomocą metody `addScore()`. 
+Oczywiście wyświetlamy mu również powiadomienie ile punktów zdobył.
+```ruby
+if(isset($_POST['submit'])){
+    $answers_ids = unserialize($_POST["questions_ids"]);
+    $pkt=0;
+    foreach ( $answers_ids as $single_answer_id ) {
+        //echo $_POST[$single_answer_id];
+        $question -> setID($single_answer_id );
+        $correct_answer = $question ->getQuestionInfo();
+
+        if (strcmp($correct_answer['correct_answer'],$_POST[$single_answer_id]) === 0) {
+            $pkt++;
+        }
+    }
+
+    $UserInRanking = new Ranking();
+    if ($UserInRanking->searchUserInRanking($uid) == false ){
+        $UserInRanking->addUserToRanking($uid);
+        $UserInRanking->addScore($uid,$pkt);
+    }
+    else{
+        $UserInRanking->addScore($uid,$pkt);
+    }
+    echo "<script> alert(\"Zdobyłeś {$pkt}/10 punktów.\") </script>";
+}
+```
 
 ## System rankingu
 Plikami odpowiedzialnymi za ranking jest plik `rankign.php` oraz klasa `Ranking` w katalogu php.
