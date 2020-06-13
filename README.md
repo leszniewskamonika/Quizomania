@@ -45,9 +45,12 @@ Celem aplikacji jest umożliwenie użytkowniką rozwiązywania quizów oraz twor
 10. [System logowania](README.md#system-logowania)
 11. [System dodawania nowych pytań](README.md#system-dodawania-nowych-pytań)
 12. [System akceptacji pytań przez administratora](README.md#system-akceptacji-pytań-przez-administratora)
-13. System wykonywania quizów
-14. System rankingu
-15. Podstawowe zależności w wyglądzie
+13. [System wykonywania quizów](README.md#system-wykonywania-quizów)
+14. [System rankingu](README.md#system-rankingu)
+15. [Podstawowe zależności w wyglądzie](README.md#podstawowe-zależności-w-wyglądzie)
+    - [Ogólna koncepcja wyglądu strony](README.md#ogólna-koncepcja-wyglądu-strony)
+    - [Banner na stronie](README.md#banner-na-stronie)
+    - [Przycisk zmieniający podświetlenie](README.md#przycisk-zmieniający-podświetlenie)
    
 ## Technologie
 Do stworzenia oprogramowania wykorzstałyśmy skryptowy język PHP oraz hipertekstowy język znaczników HTML. Takie połączenie pozwala 
@@ -148,7 +151,7 @@ Teraz znająć już adres IP możemy korzytsać z aplikacji na telefonie poprzez
 ![](dokumentacja/katalogi.JPG)
 
 ### Katalog: css
-Katalog zwiera wszystkie pliki odpowiedzialne za wygląd strony, napisane w języku CSS.
+Katalog zwiera wszystkie pliki odpowiedzialne za wygląd strony, napisane w języku CSS. Więcej o tym katalogu zostało opisane w [Podstawowe zależności w wyglądzie](README.md#podstawowe-zależności-w-wyglądzie).
 ### Katalog: dokumentacja
 Katalog przechowuje plik pdf, którego zawartość została wykorzystana podczas tworzenia dokumentacji. W podkatalagou *Przypadki użycia* znajduję się zdjęcia diagramów UML przypadków użycia. Pozostałe pliki to screeny katalogów programu oraz diagramów klas UML.
 ### Katalog: images
@@ -981,5 +984,190 @@ public function updateStatusWhenQuestionAssent(){
         return true;
     }
 ```
+## System wykonywania quizów
+
+## System rankingu
+Plikami odpowiedzialnymi za ranking jest plik `rankign.php` oraz klasa `Ranking` w katalogu php.
+
+Plik `ranking.php` odpowiada za wyświetlanie infromacji o rankingu punktacji. Pobiera on metodę `rankingInfo` ([patrz klasa Ranking.php](README.md#rankingphp)) z klasy `Ranknig` do wyświetlenia informacji o punktacji. Odczytywana jest również informacja o użytkowniku oraz zdobytej przez niego ilości punktów (`$user->setID($id_user);` oraz ` $username = $user->getUserInfo();`).
+
+```ruby
+$user = new User();
+            if (!empty($_SESSION['id'])) {
+                $uid = $_SESSION['id'];
+
+            }
+
+            $ranking = new Ranking();
+            $infoRanking = $ranking->rankingInfo();
+            $procentUser = [];
+            foreach ($infoRanking as $n =>$row) {
+                $id_user = $row['id_user'];
+                $user->setID($id_user);
+                $username = $user->getUserInfo();
+                $username = $username["login"];
+
+                $points = $row["points"];
+                $max_points = $row["max_points"];
+                $procentUser = $ranking->convertToProcent($id_user);
+                $position = $n + 1;
+                echo "<p style='color: white'>{$position}. {$username} - {$points} punktów na {$max_points}. Celność {$procentUser}</p>";
+
+            }
+```
+
+## Podstawowe zależności w wyglądzie
+Wygląd aplikacji został stworzony głównie przy użyciu języka CSS, którego pliki znajdują się w katalogu css.
+
+### Ogólna koncepcja wyglądu strony
+Motywem wyglądowym strony była tablica szkolna i stanowi ona główne tło aplikacji. 
+
+![](dokumentacja/motyw.JPG)
+
+Za tło w aplikacji odpowiada plik `main-bannner.css` w katalogu css. Poniższy kod określa obrazek tła `background: url("../images/start1.png");` oraz jego wysokość `height: 150vh;` w sytuacji korzystania z aplikacji na komputerze. Natomiast jeśli korzystami z niej na wyświetlaczu poniżej 1240px (`@media (max-width: 1240px)`), 640px (`@media (max-width: 640px)`) oraz 360px (`@media (max-width: 1240px)`). Wczytywany jest obrazek tła bez napisu loga `background: url("../images/start_optimized.jpg");` oraz odpowiednio dostosowany wysokościowo ` height: 60vh;`. 
+
+```ruby
+.main-banner{
+    background: url("../images/start1.png");
+    height: 150vh;
+    background-position: center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width: 1240px){
+    .main-banner{
+        background: url("../images/start_optimized.jpg");
+        height: 60vh;
+        background-position: center center;
+        background-size: cover;
+    }   
+}
+@media (max-width: 640px){
+    .main-banner{
+         background: url("../images/start_optimized.jpg");
+         height: 130vh;
+         background-position: center center;
+         background-size: cover;
+    }
+}
+    @media (max-width: 360px){
+        .main-banner{
+             background: url("../images/start_optimized.jpg");
+             height: 60vh;
+             background-position: center center;
+             background-size: cover;
+        }
+    }
+```
 
 
+### Banner na stronie
+Opcje jakie posiada użytkownik w zależności od obecnego statusu (zalogowany, niezalogowany itp.) w bannerze zostały opisane w [Nawigacja na stronie](README.md#nawigacja-na-stronie).Tutaj zostanie omówiony wygląd tego banneru na komputerze oraz na telefonie.
+
+Za wygląd bannera odpowiada plik `main-navigation.css`. 
+
+![](dokumentacja/banner.JPG)
+Wygląd bannera na komputerze
+
+Poniższe kody przedstawiają klasy odpwiedzialne za wygląd bannera na komputerze.
+
+```ruby
+.main-navigation{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+```
+Ten kod określa głównie: kolor `background: rgba(0, 0, 0, 0.5);`, szerokość `padding: 20px;` i przemiszczanie się wraz ze scrollem strony `position: fixed;`. 
+
+```ruby
+.main-navigation__quizy-item{
+    margin-left: 50px;
+    padding: 5px 0;
+}
+```
+Kod określa jak duży może być odstęp między kolejnymi napisami w bannerze `padding: 5px 0;` oraz jego pozycję względem lewego marginesu ` margin-left: 50px;`. 
+
+```ruby
+.main-navigation__quizy-item:hover{
+    border-bottom: 2px solid white;
+}
+```
+Podświetla pod napisami w bannerze białę kreskę ` border-bottom: 2px solid white;` po najechaniu na nie.
+
+
+![](dokumentacja/bannertelefon.PNG)
+Wygląd bannera na telefonie
+
+Wygląd bannera na telefonie wygląda innaczej niż na komputerze, ponieważ ze względu na zbyt małą szerokość ekranu telefonu nie zmieściły by się napisy bannera. Związku z tym aby przejść do bannera należy wcisnąć obrazek trzech poziomych kresek w prawym górnym rogu. Przejdziemy wtedy do nawigacji jak to jest pokazane na obrazku powyżej. Za takie rozwiązanie odpowiadają następujące fragmenty kodu w pliku `main-navigation.css`.
+
+```ruby
+@media (max-width: 991px){
+.main-navigation__quizy{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: black;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+}
+```
+Kod wyświetla banner czarny banner `background: black;` z napisami ułożonymi w kolumnie jeden pod drugim `flex-direction: column;`.
+Tekst wyświetlany jest pośrodku `text-align: center;`.
+
+```ruby
+@media (max-width: 991px){
+    .main-navigation__mobile-button{
+        display: unset;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+}
+@media (max-width: 991px){
+    .main-navigation__mobile-button-image{
+      width: 30px;
+      display: block;
+    }
+}
+```
+Ten kod określa przycisk widoczności obrazka w sytuacji, kiedy szerokość ekranu jest mniejsza niż 991px `@media (max-width: 991px)`.
+
+
+### Przycisk zmieniający podświetlenie
+Przycisk zmienia swój kolor po najechaniu na niego kursorem z ciemno-przeźroczystego na czarny. Wygląd taki jest określony w katalogu `main-banner.css`. 
+
+![](dokumentacja/przycisk.JPG)
+Obrazek przedstawia przycis na stronie głównej. Takie rodzaje przycisków zostały również użyte w sekcji przejścia do rozwiązywania quizów odpowiednich kategorii. 
+
+```ruby
+.main-banner__button{
+
+    border: 2px solid white;
+    padding: 20px 30px;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 23px;
+    font-weight: bold;
+    background: rgba(0, 0, 0,0.5);
+    transition: 0.3s;
+}
+.main-banner__button:hover{
+    background: black;
+}
+```
+Klasa `.main-banner__button` przedstawia jak ma wyglądać przycisk, poprzez określenie jego: wielkości `padding: 20px 30px;`, obramowania `border: 2px solid white;`, koloru liter `color: white;` oraz koloru `background: rgba(0, 0, 0,0.5);`. Po najechaniu na niego kursorem (`.main-banner__button:hover`) zmienia kolor na czarny `background: black;`. 
