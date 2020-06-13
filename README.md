@@ -5,10 +5,16 @@ Celem aplikacji jest umożliwenie użytkowniką rozwiązywania quizów oraz twor
 
 ## Spis treści
 1. [Technologie](README.md#technologie)
-2. [Sposób użycia](README.md#sposób-użycia)
+2. [Import bazy danych](README.md#import-bazy-danych)
+   - [Baza danych w phpMyAdmin](README.md#baza-danych-w-phpmyadmin)
+   - [Baza danych w MYSQL-Front](README.md#baza-danych-w-mysql-front)
+3. [Uruchamianie aplikacji](README.md#uruchamianie-aplikacji)
+   - [Korzystanie na komputerze](README.md#korzystanie-na-komputerze)
+   - [Korzystanie na telefonie](README.md#korzystanie-na-telefonie)
+4. [Sposób użycia](README.md#sposób-użycia)
    - [Diagramy przypadków użycia: użytkownik](README.md#diagramy-przypadków-użycia-użytkownik)
    - [Diagramy przypadków użycia: administrator](README.md#diagramy-przypadków-użycia-administrator)
-3. [Struktura i opis katalogów aplikacji](README.md#struktura-i-opis-katalogów-aplikacji)
+5. [Struktura i opis katalogów aplikacji](README.md#struktura-i-opis-katalogów-aplikacji)
    - [Katalog: css](README.md#katalog-css)
    - [Katalog: dokumantacja](README.md#katalog-dokumentacja)
    - [Katalog: images](README.md#katalog-images)
@@ -18,28 +24,28 @@ Celem aplikacji jest umożliwenie użytkowniką rozwiązywania quizów oraz twor
    - [Plik: index.php](README.md#plik-indexphp)
    - [Plik: quiz v2_3.sql](README.md#plik-quiz-v2-3sql)
    - [Plik: README.md](README.md#plik-readmemd)
-4. [Struktura bazy danych](README.md#struktura-bazy-danych)
+6. [Struktura bazy danych](README.md#struktura-bazy-danych)
    - [Schemta bazy danych](README.md#schemat-bazy-danych)
    - [Tabela: category](README.md#tabela-category)
    - [Tabela: quanda](README.md#tabela-quanda)
    - [Tabela: ranking](README.md#tabela-ranking)
    - [Tabela: user](README.md#tabela-user)
-5. [Struktura klas](README.md#struktura-klas)
+7. [Struktura klas](README.md#struktura-klas)
    - [Klasa: DBConnection.php](README.md#dbconnectionphp)
    - [Klasa: Question.php](README.md#questionphp)
    - [Klasa: User.php](README.md#userphp)
-6. [Nawigacja na stronie](README.md#nawigacja-na-stronie)
+8. [Nawigacja na stronie](README.md#nawigacja-na-stronie)
    - [Nawigacja podstawowa](README.md#nawigacja-podstawowa)
    - [Nawigacja użytkownika](README.md#nawigacja-użytkownika)
    - [Nawigacja administratora](README.md#nawigacja-administratora)
    - [Nawigacja na urządzeniach mobilnych](README.md#nawigacja-na-urządzeniach-mobilnych)
    - [Stopka](README.md#stopka)
-7. [System rejestracji](README.md#system-rejestracji)   
-8. [System logowania](README.md#system-logowania)
-9. System dodawania nowych pytań
-10. System akceptacji pytań przez administratora
-11. Podstawowe zależności wyglądu aplikacji
-12. System wykonywania quizów 
+9. [System rejestracji](README.md#system-rejestracji)   
+10. [System logowania](README.md#system-logowania)
+11. System dodawania nowych pytań
+12. System akceptacji pytań przez administratora
+13. System wykonywania quizów
+14. Podstawowe zależności w wyglądzie
    
 ## Technologie
 Do stworzenia oprogramowania wykorzstałyśmy skryptowy język PHP oraz hipertekstowy język znaczników HTML. Takie połączenie pozwala 
@@ -51,6 +57,67 @@ Baza danych została utworzona w MySQL przy wykorzystaniu narzędzia phpMyAdmin,
 Część graficzna została napisana w języku CSS,którego lista dyrektyw ustala w jaki sposób ma być wyświetlona przez przeglądarkę zwartość
 wybranego elementu HTML.
 
+#### Uwaga!! 
+Aplikacja działa prawidłowo na przeglądarkach takich jak Firefox, Microsoft Edge oraz Internet Explorer. Korzystając z innych przeglądarek (na przykład Google Chrome) nie gwarantujemy poprawnego działania oraz odpowiedniego wyglądu aplikacji.  
+
+#### Uwaga!!
+Aplikacja działa tylko i wyłącznie w sieci lokalnej.
+
+## Import bazy danych
+
+#### Uwaga!!
+Do prawnego działania aplikacji potrzebna jest dobrze zaimportowana baza danych.
+
+Poniżej zosatnie przedstawione w jaki sposób prawidłowo zaimportować bazę danych przy użyciu phpMyAdmin oraz MySQL-Front. Przy używaniu aplikacji wstarczy korzystanie tylko z jednejo z powyżej podanych narzędzi, jednak dla ułątwienia zostanie pokazane jak dokonać importu na obu.
+
+### Baza danych w phpMyAdmin
+1. Uruchamiamy na komputerze Apache oraz MySQL (np. wykorzystując program XAMPP Control Panel).
+![](dokumentacja/xampp.JPG)
+
+2. Przechodzimy do narzędzi phpMyAdmin wpisując w pasku wyszukiwania przeglądarki `localhost/phpmyadmin/` (nie podajemy hasła root-a).
+
+3. Tworzymy nową bazę danych o nazwie 'quiz'.
+![](dokumentacja/1.JPG)
+
+4. Do nowow utworzonej bazy importujemy bazę danych naszej aplikacji o nazwie 'baza końcowa'.
+![](dokumentacja/3.JPG)
+
+5. Po poprwanym wykonaniu działań powinniśmy otrzymać bazę danych o następującej strukturze.
+![](dokumentacja/5.JPG)
+
+**Teraz możemy zacząć korzystać z aplikacji.**
+
+## Uruchamianie aplikacji
+### Korzystanie na komputerze
+Do korzystanie z aplikacji na komputerze potrzebna jest poprawnie zaimportowana baza danych oraz uruchomiony Apache i MySQL.
+
+Aby ruchomić aplikacje należy w przeglądarce internetowej wpisać następujący adres `localhost/Quizomania/index.php`.
+
+### Korzystanie na telefonie
+Do korzystanie z aplikacji na telefonie jest potrzebna zaimportowana na komputerze (z którym będziemy się łączyć) baza danych oraz uruchomiony Apache i MySQL.
+
+Aby uruchomić aplikację potrzebujemy znać adres IPv4 Wi-Fi przez który będziemy się łączyć z bazą danych na komputerze (**PAMIĘTAJ:** telefon oraz komputer muszą być podłączone do tej samej sieci Wi-Fi).
+Można to sprawdzić wykonując w wierszu poleceń PC komendę `ipconfig`.
+![](dokumentacja/cmd.JPG)
+W tym przykładzie adres IP Wi-Fi to 192.168.1.10.
+
+Teraz znająć już adres IP możemy korzytsać z aplikacji na telefonie poprzez wpisanie w przeglądarce internetowej `[adres IP Wi-Fi]/Quizomania/index.php`. Wykorzystująć przykładowy adres IP, dostęp otrzymamy poprzez wpisane `192.168.1.10/Quizomania/index.php`.
+
+### Baza danych w MYSQL-Front
+1. Uruchamiamy na komputerze Apache oraz MySQL (np. wykorzystując program XAMPP Control Panel).
+
+2. Uruchamiamy MySQL-Front, a następnie w localhost dodajemy nową bazą danych nadając jej nazwę 'quiz'.
+![](dokumentacja/m1.JPG)
+
+![](dokumentacja/m2.JPG)
+
+3. Przechodzimy do bazy 'quiz' i tam importujemy bazą danych aplikacji o nazwie 'baza końcowa'.
+![](dokumentacja/m3.JPG)
+
+4. Po poprawnym wykonianiu czynności powinniśmy otrzymać bazę danych o następującej strukturze.
+![](dokumentacja/m4.JPG)
+
+**Teraz możemy zacząć korzystać z aplikacji.**
 
 ## Sposób użycia
 ### Diagramy przypadków użycia: użytkownik
@@ -61,7 +128,7 @@ wybranego elementu HTML.
 
 
 ## Struktura i opis katalogów aplikacji
-![](dokumentacja/schemat.JPG)
+![](dokumentacja/katalogi.JPG)
 ### Katalog: css
 Katalog zwiera wszystkie pliki odpowiedzialne za wygląd strony, napisane w języku CSS.
 ### Katalog: dokumentacja
@@ -83,7 +150,7 @@ Ten plik zawiera całą dokumentację aplikacji.Posiada rozrzeszenie md co powod
 
 ## Struktura bazy danych
 ### Schemat bazy danych
- //Tu wrzucimy zdjęcie shcematu bazy danych
+ ![](dokumenatcja/schemat.JPG)
  
 ### Tabela: category
 Tabela przechowuje informacje o kategoriach.
