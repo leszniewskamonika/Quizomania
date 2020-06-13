@@ -22,7 +22,7 @@ Celem aplikacji jest umożliwenie użytkowniką rozwiązywania quizów oraz twor
    - [Katalog: php](README.md#katalog-php)
    - [Katalog: style](README.md#katalog-style)
    - [Plik: index.php](README.md#plik-indexphp)
-   - [Plik: quiz v2_3.sql](README.md#plik-quiz-v2-3sql)
+   - [Plik: baza końcowa.sql](README.md#baza-końcowasql)
    - [Plik: README.md](README.md#plik-readmemd)
 6. [Struktura bazy danych](README.md#struktura-bazy-danych)
    - [Schemta bazy danych](README.md#schemat-bazy-danych)
@@ -34,6 +34,7 @@ Celem aplikacji jest umożliwenie użytkowniką rozwiązywania quizów oraz twor
    - [Klasa: DBConnection.php](README.md#dbconnectionphp)
    - [Klasa: Question.php](README.md#questionphp)
    - [Klasa: User.php](README.md#userphp)
+   - [Klasa: Ranking.php](README.md#rankingphp)
 8. [Nawigacja na stronie](README.md#nawigacja-na-stronie)
    - [Nawigacja podstawowa](README.md#nawigacja-podstawowa)
    - [Nawigacja użytkownika](README.md#nawigacja-użytkownika)
@@ -42,10 +43,11 @@ Celem aplikacji jest umożliwenie użytkowniką rozwiązywania quizów oraz twor
    - [Stopka](README.md#stopka)
 9. [System rejestracji](README.md#system-rejestracji)   
 10. [System logowania](README.md#system-logowania)
-11. System dodawania nowych pytań
-12. System akceptacji pytań przez administratora
+11. [System dodawania nowych pytań](README.md#system-dodawania-nowych-pytań)
+12. [System akceptacji pytań przez administratora](README.md#system-akceptacji-pytań-przez-administratora)
 13. System wykonywania quizów
-14. Podstawowe zależności w wyglądzie
+14. System rankingu
+15. Podstawowe zależności w wyglądzie
    
 ## Technologie
 Do stworzenia oprogramowania wykorzstałyśmy skryptowy język PHP oraz hipertekstowy język znaczników HTML. Takie połączenie pozwala 
@@ -72,18 +74,44 @@ Poniżej zosatnie przedstawione w jaki sposób prawidłowo zaimportować bazę d
 
 ### Baza danych w phpMyAdmin
 1. Uruchamiamy na komputerze Apache oraz MySQL (np. wykorzystując program XAMPP Control Panel).
-![](dokumentacja/xampp.JPG)
+   
+   ![](dokumentacja/xampp.JPG)
+ 
 
 2. Przechodzimy do narzędzi phpMyAdmin wpisując w pasku wyszukiwania przeglądarki `localhost/phpmyadmin/` (nie podajemy hasła root-a).
 
 3. Tworzymy nową bazę danych o nazwie 'quiz'.
-![](dokumentacja/1.JPG)
+   
+      ![](dokumentacja/1.JPG)
+
 
 4. Do nowow utworzonej bazy importujemy bazę danych naszej aplikacji o nazwie 'baza końcowa'.
-![](dokumentacja/3.JPG)
+   
+   ![](dokumentacja/3.JPG)
 
 5. Po poprwanym wykonaniu działań powinniśmy otrzymać bazę danych o następującej strukturze.
-![](dokumentacja/5.JPG)
+   
+   ![](dokumentacja/4.JPG)
+   
+
+**Teraz możemy zacząć korzystać z aplikacji.**
+
+### Baza danych w MYSQL-Front
+1. Uruchamiamy na komputerze Apache oraz MySQL (np. wykorzystując program XAMPP Control Panel).
+
+2. Uruchamiamy MySQL-Front, a następnie w localhost dodajemy nową bazą danych nadając jej nazwę 'quiz'.
+  
+  ![](dokumentacja/m1.JPG)
+
+  ![](dokumentacja/m2.JPG)
+
+3. Przechodzimy do bazy 'quiz' i tam importujemy bazą danych aplikacji o nazwie 'baza końcowa'.
+  
+  ![](dokumentacja/m3.JPG)
+
+4. Po poprawnym wykonianiu czynności powinniśmy otrzymać bazę danych o następującej strukturze.
+  
+  ![](dokumentacja/m4.JPG)
 
 **Teraz możemy zacząć korzystać z aplikacji.**
 
@@ -98,37 +126,27 @@ Do korzystanie z aplikacji na telefonie jest potrzebna zaimportowana na komputer
 
 Aby uruchomić aplikację potrzebujemy znać adres IPv4 Wi-Fi przez który będziemy się łączyć z bazą danych na komputerze (**PAMIĘTAJ:** telefon oraz komputer muszą być podłączone do tej samej sieci Wi-Fi).
 Można to sprawdzić wykonując w wierszu poleceń PC komendę `ipconfig`.
-![](dokumentacja/cmd.JPG)
+ 
+ ![](dokumentacja/cmd.JPG)
+
 W tym przykładzie adres IP Wi-Fi to 192.168.1.10.
 
 Teraz znająć już adres IP możemy korzytsać z aplikacji na telefonie poprzez wpisanie w przeglądarce internetowej `[adres IP Wi-Fi]/Quizomania/index.php`. Wykorzystująć przykładowy adres IP, dostęp otrzymamy poprzez wpisane `192.168.1.10/Quizomania/index.php`.
 
-### Baza danych w MYSQL-Front
-1. Uruchamiamy na komputerze Apache oraz MySQL (np. wykorzystując program XAMPP Control Panel).
-
-2. Uruchamiamy MySQL-Front, a następnie w localhost dodajemy nową bazą danych nadając jej nazwę 'quiz'.
-![](dokumentacja/m1.JPG)
-
-![](dokumentacja/m2.JPG)
-
-3. Przechodzimy do bazy 'quiz' i tam importujemy bazą danych aplikacji o nazwie 'baza końcowa'.
-![](dokumentacja/m3.JPG)
-
-4. Po poprawnym wykonianiu czynności powinniśmy otrzymać bazę danych o następującej strukturze.
-![](dokumentacja/m4.JPG)
-
-**Teraz możemy zacząć korzystać z aplikacji.**
-
 ## Sposób użycia
 ### Diagramy przypadków użycia: użytkownik
+
 ![](dokumentacja/Przypadki%20użycia/Użytkownik.jpg)
 
 ### Diagramy przypadków użycia: administrator
+
 ![](dokumentacja/Przypadki%20użycia/Admin.jpg)
 
 
 ## Struktura i opis katalogów aplikacji
+
 ![](dokumentacja/katalogi.JPG)
+
 ### Katalog: css
 Katalog zwiera wszystkie pliki odpowiedzialne za wygląd strony, napisane w języku CSS.
 ### Katalog: dokumentacja
@@ -143,7 +161,7 @@ Odpowiada za przechowywanie głównych plików projektu napisanych w języku PHP
 Zawiera pliki odpowiedzialne za opcje nawigacji w zależności od statusu zalogowania na konto ( brak zalogowania `nawigacja.php`, zalogowany jako użytkownik `nawigacja_user.php` oraz zalogowany jako administrator `nawigacja_admin.php`). W podpukcie [Nawigacja na stronie](README.md#nawigacja-na-stronie) zostały dokładniej opisane.
 ### Plik: index.php
 Ten plik zawiera kod strony głównej aplikacji i stanowi on najważniejszą cześć projektu, ponieważ od niego rozpoczynają się kolejne zależności w projekcie.
-### Plik: quiz v2-3.sql
+### Plik: baza końcowa.php
 Plik formatu sql. przechowujące dane z bazy danych, którego struktura jest opisana w [Struktura bazy danych](README.md#struktuta-bazy-danych).
 ### Plik: README.md
 Ten plik zawiera całą dokumentację aplikacji.Posiada rozrzeszenie md co powoduje,że musi być otwierany za pomocą takiego programu systemu Windows jak Windows Notepad lub poprzez platformę github.com .
@@ -217,7 +235,7 @@ class DBConnection {
 Zadaniem klasy jest odpowiadanie za łączość z tabelą *quanda* oraz wykonywanie zagdanień związanych z pytaniami (wyświetlanie pytań, dodawanie nowych pytań, zmiania statusu z niezaakceptowanego na zaakceptowany).
 Klasa ta pobiera głównie takie informacje jak: id pytania (`$_id`), id kategorii (`$_id_category`), treść pytania (`$_question`), odpowiedzi (`$_answerA`,`$_answerB`,`$_answerC`).
 
-Metoda `public function__construct()` odpowiada za łączność z bazą danych w tej klasie poprzez tworzenie nowego obiektu klasy DBConnection `$this->db = new DBConnection()`.
+Metoda `public function__construct()` odpowiada za łączność z bazą danych w tej klasie poprzez tworzenie nowego obiektu klasy `DBConnection` -> `$this->db = new DBConnection()`.
 
 ```ruby
 class Question
@@ -437,7 +455,10 @@ public function logout() {
         unset($_SESSION);
         session_destroy();
     }
- ```   
+ ``` 
+ 
+### Ranking.php
+Zadaniem klasy jest odpowiedanie za ranking punktacji quizów.
 
 ## Nawigacja na stronie
 ### Nawigacja podstawowa
@@ -488,7 +509,7 @@ W taki sposób na przykład lista `<li class="main-navigation__quizy-item">` z p
 ```
 
 ### Nawigacja użytkownika
-Plik odpowiedzialny za nawigację użytkownika (użytkownik zalogowany na konto) odpowiada plik w katalogu klas `nawigacja_user.php`. Podobnie jak w nawigacji podstawowej mamy te same znaczniki odpowiadające za wyświetlanie loga oraz jego przekierowanie do strony głównej. W liście nieuporządkowanej `<ul></ul>` znajdują się trzy takie same co w nawigacji podstawowej odnośniki do podstron. Są to odpowiednio `Home`, `Quizy` oraz `O nas`, a także dodane są nowe `Moje konto`, `Stwórz pytanie` oraz `Wyloguj`. One natomiast są widoczne tylko dla użytkownika zalogowanego na stronie głównej i jej podstronach. A znacznik `<a href="<?php print SITE_URL; ?>user_panel.php?q=logout" class="main-navigation__link">` powoduje wylogowanie użytkownika.
+Plik odpowiedzialny za nawigację użytkownika (użytkownik zalogowany na konto) odpowiada plik w katalogu klas `nawigacja_user.php`. Podobnie jak w nawigacji podstawowej mamy te same znaczniki odpowiadające za wyświetlanie loga oraz jego przekierowanie do strony głównej. W liście nieuporządkowanej `<ul></ul>` znajdują się trzy takie same co w nawigacji podstawowej odnośniki do podstron. Są to odpowiednio `Home`, `Quizy` oraz `O nas`, a także dodane są nowe `Moje konto`, `Stwórz pytanie`, `Ranking` oraz `Wyloguj`. One natomiast są widoczne tylko dla użytkownika zalogowanego na stronach `Moje konto`, `Stwórz pytanie` oraz `Ranking`. A znacznik `<a href="<?php print SITE_URL; ?>user_panel.php?q=logout" class="main-navigation__link">` powoduje wylogowanie użytkownika.
 
 ```ruby
 <nav class="main-navigation">
@@ -525,7 +546,11 @@ Plik odpowiedzialny za nawigację użytkownika (użytkownik zalogowany na konto)
                         Stwórz pytanie
                     </a>
                 </li>
-              
+                <li class="main-navigation__quizy-item">
+                  <a href="../php/ranking.php" class="main-navigation__link">
+                        Ranking
+                  </a>
+                  </li>
                   <li class="main-navigation__quizy-item">
                   <a href="<?php print SITE_URL; ?>user_panel.php?q=logout" class="main-navigation__link">
                       Wyloguj
@@ -538,6 +563,87 @@ Plik odpowiedzialny za nawigację użytkownika (użytkownik zalogowany na konto)
             </div>
         </nav>
 ```
+
+Zalogowany użytkownik przechodząc do strony `Home`, `O nas` i `Quizy`, mam możliwość jedynie bezpośrednego przejścia (używając panelu nawigacji) do stron `Home`, `O nas`, `Quizy`, `Moje konto`, ` Ranking` i wykonanie wylogowania `Wyloguj`. Taki zabieg powoduje przejrzystość strony głównej oraz lepszą nawigację na stronie.
+
+Takie rozwiązanie zostało zawarte w kodzie strony głównej `index.php` natępującymi liniami kodu:
+
+``` ruby
+    <ul class="main-navigation__quizy js-main-navigation__quizy">
+                <li class="main-navigation__quizy-item">
+                    <a  href="index.php" class="main-navigation__link">
+                      Home
+                    </a>
+                  </li>
+                <li class="main-navigation__quizy-item">
+                    <a  href="#about-us" class="main-navigation__link">
+                      O nas
+                    </a>
+                  </li>
+                <li class="main-navigation__quizy-item">
+                  <a  href="#quizy" class="main-navigation__link">
+                    Quizy
+                  </a>
+                </li>
+                <?php
+                include "php/class/User.php";
+                include "php/class/DBConnection.php";
+
+                $user = new User();
+                if (!empty($_SESSION['id'])) {
+                    $uid = $_SESSION['id'];
+
+                }
+                if (isset($_GET['q'])) {
+                    $user->logout();
+                    header("location:index.php");
+                }
+                if ($user->getSession() === FALSE) {
+                    echo"<li class=\"main-navigation__quizy-item\">
+                    <a  href=\"php/login.php\" class=\"main-navigation__link\">
+                      Logowanie
+                    </a>
+                  </li>
+                  <li class=\"main-navigation__quizy-item\">
+                    <a  href=\"php/register.php\" class=\"main-navigation__link\">
+                      Rejestracja
+                    </a>
+                  </li>";
+                }
+                else {
+                            if($_SESSION['rola']==="1"){
+                                echo "<li class=\"main-navigation__quizy-item\">
+                              <a href=\"php/admin_panel.php\" class=\"main-navigation__link\">
+                                  Moje konto
+                                </a>
+                              </li> ";
+                              echo "<li class=\"main-navigation__quizy-item\">
+                              <a href=\"php/ranking.php\" class=\"main-navigation__link\">
+                                  Ranking
+                                </a>
+                              </li> ";
+                            }
+                            else {
+                                echo "<li class=\"main-navigation__quizy-item\" >
+                              <a href=\"php/user_panel.php\" class=\"main-navigation__link\">
+                                  Moje konto
+                                </a>
+                              </li> ";
+                              echo "<li class=\"main-navigation__quizy-item\">
+                              <a href=\"php/ranking.php\" class=\"main-navigation__link\">
+                                  Ranking
+                                </a>
+                              </li> ";
+                            };
+                            echo "<li class=\"main-navigation__quizy-item\">
+                  <a href=\"index.php?q=logout\" class=\"main-navigation__link\">
+                      Wyloguj
+                    </a>
+                  </li> ";
+                };
+                ?>
+```
+Pierwsze linijki kodu odpowiadają za wyświetlanie stałych odnośników w panelu nawigacji.Natomiast kod napisany w PHP odpowiada za wyświetlanie odpowiedniego banera, podczas gdy użytkownik jest zalogowany. 
 
 ### Nawigacja administratora
 Nawigacja administratora wygląda oraz działa niemal identycznie tak samo jak nawigacja użytkownika. Dodana jest jednak jedna dodatkowa opcja umożliwiająca administratorowi akceptację stworzonych pytań. Znajduje się to w znacznikach PHP, gdzie tworzony jest nowy obiekt user `$user = new User();` a jego rola musi wynosić 1 `$_SESSION['rola']==="1"` ( tak jest określony administrator w bazie danych ). Wtedy użytkownik, który jest administratorem ma możliwość przejścia do sekcji akceptacji pytań. Jeśli natomiast rola użytkownika jest inna niż 1 przejście do tej sekcji nie zostaje wyświetlane. 
@@ -594,9 +700,12 @@ Nawigacja administratora wygląda oraz działa niemal identycznie tak samo jak n
               else {
                 
               };
-                
                   ?>
-                  
+                  <li class="main-navigation__quizy-item">
+                  <a href="../php/ranking.php" class="main-navigation__link">
+                  Ranking
+                  </a>
+                  </li>
                   <li class="main-navigation__quizy-item">
                   <a href="<?php print SITE_URL; ?>admin_panel.php?q=logout" class="main-navigation__link">
                       Wyloguj
@@ -609,6 +718,8 @@ Nawigacja administratora wygląda oraz działa niemal identycznie tak samo jak n
             </div>
         </nav>
  ```
+ 
+ Na stronie głównej administrator ma takie same opcje w panelu nawigacji jak użytkownik ([patrz nawigacja użytkownik](README.md#nawigacja-użytkownik)) i dopiero po przejściu w `Moje konto` posiada więcej możliwości akcji w aplikacji.
  
 ### Nawigacja na urządzeniach mobilnych
 Nawigacja na urządzeniach mobilnych różni się od tej wyświetlanej na komputerze, jednak wykorzystuje ona te same pliki nawigacyjne. 
@@ -738,4 +849,137 @@ if (isset($_POST['submit'])) {
     }
 }
 ```
+
+## System dodawania nowych pytań
+Głównym plikiem odpowiedzialnym za dodawanie nowych pytań do quizów jest `add_question.php` w katalogu php.
+
+W pierwszej kolejności tworzony jest nowy obiekt klasy `Question()`, następnie przypisywane są mu odpowiednie następujące wartości takie jak: kategoria(`$uid_category`), treść pytania(`$uqestion`), odpowiedź A(`$uanswerA`), odpowiedź B (`$uanswerB`), odpowiedź C (`$uanswerC`) oraz poprawna odpowiedź (`$ucorrect_answer`).
+
+Po tym sprawdzane jest czy każda z wartości została wypełniona, jeśli nie, wyświetla się odpowiedni komunikat taki jak na przykład `Musisz wprowadzić kategorie pytania!`.
+
+Następnie nawiązywane jest połączenie z bazą danych (` $db = new DBConnection();` i ` $db = $db->returnConnection();`) oraz dodawane jest pytanie do bazy danych (`$addQuestion = $question->addQuestion();`).
+Jeśli pytanie zostaje pomyślnie dodane otrzymujemy komunikat `Pytanie pomyślnie dodano, teraz administrator musi je zaakceptować`, w przeciwnym razie otrzymujemy komunikat o niepowodzeniu poprawnego dodania pytania `Dodawanie nieudane. Spróbuj ponownie.`.
+
+```ruby
+$user = new User();
+if ($user->getSession()===FALSE) {
+    header("location:/../index.php");
+}
+
+$question = new Question();
+
+$status = '';
+
+$errors = array();
+//If our form has been submitted.
+if(isset($_POST['submit'])){
+    extract($_POST);
+    //Get the values of our form fields.
+    $uid_category = isset($uid_category) ? $uid_category : null;
+    $uquestion = isset($uquestion) ? $uquestion : null;
+    $uanswerA = isset($uanswerA) ? $uanswerA: null;
+    $uanswerB = isset($uanswerB) ? $uanswerB : null;
+    $uanswerC  = isset($uanswerC) ? $uanswerC : null;
+    $ucorrect_answer = isset($ucorrect_answer) ? $ucorrect_answer : null;
+
+    if(strlen(trim($uid_category)) === 0){
+        $errors[] = "Musisz wprowadzić kategorie pytania!";
+    }
+    if(strlen(trim($uquestion)) === 0){
+        $errors[] = "Musisz wprowadzić pytanie!";
+    }
+    if(strlen(trim($uanswerA)) === 0){
+        $errors[] = "Musisz wprowadzić odpowiedź A!";
+    }
+    if(strlen(trim($uanswerB)) === 0){
+        $errors[] = "Musisz wprowadzić odpowiedź B";
+    }
+    if(strlen(trim($uanswerC)) === 0){
+        $errors[] = "Musisz wprowadzić odpowiedź C!";
+    }
+    if(strlen(trim($ucorrect_answer)) === 0){
+        $errors[] = "Musisz wprowadzić poprawną odpowiedź!";
+    }
+
+    //If our $errors array is empty, we can assume that everything went fine.
+    if(empty($errors)){
+        $db = new DBConnection();
+        $db = $db->returnConnection();
+        //insert data into database.
+        $question->setId_category(mysqli_real_escape_string($db, $uid_category));
+        $question->setQuestion(mysqli_real_escape_string($db, $uquestion));
+        $question->setAnswerA(mysqli_real_escape_string($db, $uanswerA));
+        $question->setAnswerB(mysqli_real_escape_string($db, $uanswerB));
+        $question->setAnswerC(mysqli_real_escape_string($db, $uanswerC));
+        $question->setCorrect_answer(mysqli_real_escape_string($db, $ucorrect_answer));
+        $addQuestion = $question->addQuestion();
+        if ($addQuestion) {
+            $status = "<div class='alert alert-success' style='text-align:center'>Pytanie pomyślnie dodano, teraz administrator musi je zaakceptować<a href='../index.php'>Kliknij tutaj</a> żeby przejść do strony głównej</div>";
+        } else {
+            $status = "<div class='alert alert-danger' style='text-align:center'>Dodawanie nieudane. Spróbuj ponownie.</div>";
+        }
+    }
+}
+```
+
+## System akceptacji pytań przez administratora
+Głównym plikiem odpowiedzlanym za akceptację pytań przez administratora jest `assent.php` w katalogu php.
+
+```ruby
+$question = new Question();
+$question_display = $question->getQuestionNoAssent();
+//var_dump($question_display);
+$user = new User();
+if(!empty($_SESSION['id'])){
+    $uid = $_SESSION['id'];
+
+}
+if ($user->getSession()===FALSE) {
+    header("location:/../index.php");
+}
+if (isset($_GET['q'])) {
+    $user->logout();
+    header("location:../index.php");
+}
+
+$user->setID($uid);
+$userInfo = $user->getUserInfo();
+
+if(isset($_POST['submit']))
+{
+$id_question = $_POST ['submit'];
+$setid= $question->setID($id_question);
+$assent_question=$question ->updateStatusWhenQuestionAssent();
+header('location:assent.php');
+}
+```
+
+W tym pliku pobierana jest metoda `getQuestionNoAssent()` klasy `Question` do wyświetlenia pytań nowo utworzonych, które nie posiadają akceptacji (pytanie posiadające w tabeli *quanda* wartość *assent* równą 0).
+
+Metoda ta w kodzie klasy `Question` wygląda następująco:
+```ruby
+public function getQuestionNoAssent()
+    {
+        $query = "SELECT * FROM qanda WHERE assent = '0'";
+        $result = $this->db->query($query) or die($this->db->error);
+        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+            $rowi[] = $row;
+        }
+        if (!empty($rowi))
+
+            return $rowi;
+    }
+ ```
+
+Następnie w pliku `assent.php` sprawdzane jest czy administrator zaakceptował pytanie poprzez naciśnięcie przycisku `submit`. Jeśli zostało to wykonane pobierana jest metoda `updateStatusWhenQuestionAssent()` klasy `Question` odpowiedzialna za zmianę statusu pytania (zmiania assent z 0 na 1).
+
+Metoda ta w klasie `Question` wygląda następująco:
+```ruby
+public function updateStatusWhenQuestionAssent(){
+        $query = 'UPDATE qanda SET assent = "1" WHERE id ="'.$this->_id .'"';
+        $result = $this->db->query($query) or die($this->db->error);
+        return true;
+    }
+```
+
 
